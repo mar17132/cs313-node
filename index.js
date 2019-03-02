@@ -8,6 +8,7 @@ express()
     .use(express.static(path.join(__dirname, 'html')))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
+    //team act 09
     .get('/team09', (req, res) => res.sendfile('html/static_form.html'))
     .get('/math', function(req, res){
         var number1 = url.parse(req.url,true).query.num1;
@@ -42,5 +43,6 @@ express()
         res.send({results: myresutls});
 
     })
+    //team act 09
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
