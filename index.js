@@ -6,8 +6,10 @@ const PORT = process.env.PORT || 5000
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.static(path.join(__dirname, 'html')))
+    .use(express.static(path.join(__dirname, 'prove')))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
+
     //team act 09
     .get('/team09', (req, res) => res.sendfile('html/static_form.html'))
     .get('/math', function(req, res){
@@ -44,5 +46,11 @@ express()
 
     })
     //end team act 09
+    //prove week9
+    .get('/prove9',(req,res) => res.sendfile('prove/week9/week9.html'))
+    .get('/prove9',function(req,res){
+
+    })
+    //end prove week9
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
