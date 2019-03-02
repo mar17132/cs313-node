@@ -48,7 +48,7 @@ express()
     //end team act 09
     //prove week9
     .get('/prove9',(req,res) => res.sendfile('prove/week9/week9.html'))
-    .get('/prove9',function(req,res){
+    .get('/getRate',function(req,res){
 
     })
     //end prove week9
