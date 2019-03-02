@@ -14,7 +14,7 @@ express()
         var number2 = url.parse(req.url,true).query.num2;
         var operation = url.parse(req.url,true).query.oper;
 
-        res.render('pages/index.ejs'{num1 : number1, num2 : number2, operand : operation});
+        res.render('pages/index.ejs',{num1 : number1, num2 : number2, operand : operation});
 
     })
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
