@@ -17,5 +17,30 @@ express()
         res.render('pages/index.ejs',{num1 : number1, num2 : number2, operand : operation});
 
     })
+    .get('/math_service', function(req, res){
+        var number1 = parseInt(url.parse(req.url,true).query.num1);
+        var number2 = parseInt(url.parse(req.url,true).query.num2);
+        var operation = url.parse(req.url,true).query.oper;
+        var myresutls = 0;
+
+        if(operation == "add")
+        {
+            myresutls = number1 + number2;
+        }
+        else if(operation == "sub")
+        {
+            myresutls = number1 - number2;
+        }
+        else if(operation == "mul")
+        {
+            myresutls = number1 * number2;
+        }
+        else if(operation == "div")
+        {
+            myresutls = number1 / number2;
+        }
+        res.send({results: myresutls});
+
+    })
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

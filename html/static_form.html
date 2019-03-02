@@ -11,7 +11,7 @@
     <body>
         <h1>Math Form</h1>
         <form method="get" action="/math">
-            <select name="oper">
+            <select name="oper" id="oper">
                 <option value="add">add</option>
                 <option value="sub">sub</option>
                 <option value="mul">mul</option>
@@ -19,16 +19,34 @@
             </select>
             <br/><br/><br/><br/>
             <label>number1</label>
-            <input name="num1" type="text"/>
+            <input name="num1" id="num1" type="text"/>
             <br/><br/><br/><br/>
             <label>number2</label>
-            <input name="num2" type="text"/>
+            <input name="num2" id="num2" type="text"/>
             <br/><br/><br/><br/>
             <input value="submit" type="submit"/>
-
+            <input value="button" id="jsonbtn" type="json"/>
         </form>
-        <script type="text/javascript" >
 
+        <div id="test">
+
+        </div>
+        <script type="text/javascript" >
+            document.getElementById("jsonbtn").onclick = function(){
+                    var number1 = document.getElementById("num1").value;
+                    var number2 = document.getElementById("num2").value;
+                    var oper = document.getElementById("oper").value;
+                    var sendString = "num1=" + number1 + "&num2=" + number2 + "&oper=" + oper;
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var jsonString = JSON.parse(this.responseText);
+                            document.getElementById("test").innerHTML=jsonString.results;
+                        }
+                    };
+                    xhttp.open("GET", "/math_service?" + sendString, true);
+                    xhttp.send();
+                };
         </script>
     </body>
 </html>
