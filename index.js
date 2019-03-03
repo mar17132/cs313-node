@@ -8,6 +8,7 @@ express()
     .use(express.static(path.join(__dirname, 'html')))
     .use(express.static(path.join(__dirname, 'prove')))
     .set('views', path.join(__dirname, 'views'))
+    .set('views', path.join(__dirname, 'prove'))
     .set('view engine', 'ejs')
 
     //team act 09
