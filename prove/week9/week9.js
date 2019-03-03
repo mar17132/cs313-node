@@ -11,7 +11,7 @@ var postage = {
        ]
 };
 
-export.calculateRate = function(weight,postType){
+exports.calculateRate = function(weight,postType){
     var weightInt = Math.round(parseFloat(weight));
     var returnVal = "";
     switch(postType)
