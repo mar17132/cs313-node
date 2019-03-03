@@ -35,5 +35,5 @@ export.calculateRate = function(weight,postType){
     }
 
     return returnVal;
-}
+};
 
