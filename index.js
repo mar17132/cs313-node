@@ -54,7 +54,7 @@ express()
 
         //var mailrate = cal.calculateRate(url.parse(req.url,true).query.weight,
           //                               url.parse(req.url,true).query.letter);
-        res.render('/prove/week9/week9.ejs',{result: 'mailrate'});
+        res.render(path.join(__dirname,'prove/week9/week9.ejs'),{result: 'mailrate'});
     })
     //end prove week9
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
