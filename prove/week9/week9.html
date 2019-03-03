@@ -6,5 +6,19 @@
     </head>
     <body>
         <h1>Mail Rate</h1>
+        <form method="get" action="/getRate">
+            <label>Weight</label>
+            <input title="text" id="weight" name="weight"/>
+            <br/><br/><br/>
+            <select id="letter" name="letter">
+                <option value="ls" >Letters (Stamped)</option>
+                <option value="lm" >Letters (Metered)</option>
+                <option value="lf" >Large Envelopes (Flats)</option>
+                <option value="fc" >First-Class Package Service—Retail</option>
+            </select>
+            <br/><br/><br/>
+            <input type="submit" value="submit" />
+        </form>
+
     </body>
 </html>

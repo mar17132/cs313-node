@@ -49,7 +49,11 @@ express()
     //prove week9
     .get('/prove9',(req,res) => res.sendfile('prove/week9/week9.html'))
     .get('/getRate',function(req,res){
+        var cal = require('/prove/week9/week9.js');
 
+        var mailrate = cal.calculateRate(url.parse(req.url,true).query.weight,
+                                         url.parse(req.url,true).query.letter);
+        res.render('/prove/week9/week9.ejs',{result: mailrate});
     })
     //end prove week9
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
