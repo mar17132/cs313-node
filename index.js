@@ -66,9 +66,13 @@ express()
         if(pID != null)
         {
             (async()=>{
-                const result = pool.query(queryText + "'" + pID + "';");
+                const client = await pool.connect()
+                try{
+                const result = await client.query(queryText + "'" + pID + "';");
                 console.log(result);
-                await pool.end()
+                }finally{
+                    client.release()
+                }
             })().catch(e => setImmediate(() => { throw e }))
         }
     })
