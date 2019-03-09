@@ -2,16 +2,7 @@ const express = require('express')
 const path = require('path')
 const url = require('url')
 const { Pool, Client } = require('pg')
-var config = {
-    user: process.env.DB_USER,
-    host: process.env.DB_IP,
-    database: process.env.DB,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    max: 10,
-    idleTimeoutMillis: 30000
-}
-const pool = new Pool(config);
+const pool = new Pool();
 const PORT = process.env.PORT || 5000
 
 express()
@@ -63,20 +54,10 @@ express()
         var pID = url.parse(req.url,true).query.person;
         var queryText = 'SELECT * FROM Person WHERE ID=';
 
-        console.log(config);
-
-        if(pID != null)
-        {
-            (async () => {
-              const client = await pool.connect()
-              try {
-                const res = await client.query('SELECT * FROM Person WHERE id = $1', [1])
-                console.log(res.rows[0])
-              } finally {
-                client.release()
-              }
-            })().catch(e => console.log(e.stack))
-        }
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
     })
     //end team act 09
 
