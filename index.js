@@ -65,15 +65,15 @@ express()
 
         if(pID != null)
         {
-            (async()=>{
-                const client = await pool.connect()
-                try{
-                const result = await client.query(queryText + "'" + pID + "';");
-                console.log(result);
-                }finally{
-                    client.release()
-                }
-            })().catch(e => setImmediate(() => { throw e }))
+            (async () => {
+  const client = await pool.connect()
+  try {
+    const res = await client.query('SELECT * FROM Person WHERE id = $1', [1])
+    console.log(res.rows[0])
+  } finally {
+    client.release()
+  }
+})().catch(e => console.log(e.stack))
         }
     })
     //end team act 09
