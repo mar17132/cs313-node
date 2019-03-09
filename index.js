@@ -2,7 +2,16 @@ const express = require('express')
 const path = require('path')
 const url = require('url')
 const { Pool, Client } = require('pg')
-const pool = new Pool();
+var config = {
+    user: process.env.DB_USER,
+    host: process.env.DB_IP,
+    database: process.env.DB,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    max: 10, // max number of connection can be open to database
+    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+}
+const pool = new Pool(config);
 const PORT = process.env.PORT || 5000
 
 express()
@@ -64,6 +73,11 @@ express()
         }
     })
     //end team act 09
+
+
+
+
+
     //prove week9
     .get('/prove9',(req,res) => res.sendfile('prove/week9/week9.html'))
     .get('/getRate',function(req,res){
