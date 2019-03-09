@@ -8,8 +8,8 @@ var config = {
     database: process.env.DB,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
-    max: 10, // max number of connection can be open to database
-    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+    max: 10,
+    idleTimeoutMillis: 30000
 }
 const pool = new Pool(config);
 const PORT = process.env.PORT || 5000
@@ -63,17 +63,19 @@ express()
         var pID = url.parse(req.url,true).query.person;
         var queryText = 'SELECT * FROM Person WHERE ID=';
 
+        console.log(config);
+
         if(pID != null)
         {
             (async () => {
-  const client = await pool.connect()
-  try {
-    const res = await client.query('SELECT * FROM Person WHERE id = $1', [1])
-    console.log(res.rows[0])
-  } finally {
-    client.release()
-  }
-})().catch(e => console.log(e.stack))
+              const client = await pool.connect()
+              try {
+                const res = await client.query('SELECT * FROM Person WHERE id = $1', [1])
+                console.log(res.rows[0])
+              } finally {
+                client.release()
+              }
+            })().catch(e => console.log(e.stack))
         }
     })
     //end team act 09
