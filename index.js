@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const url = require('url')
-var connectionString = '   postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
+var connectionString = 'postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
 const PORT = process.env.PORT || 5000
 
 express()
@@ -62,6 +62,16 @@ express()
           console.log(err, res)
           pool.end()
         })
+
+        const client = new Client({
+  connectionString: connectionString,
+})
+client.connect()
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end()
+})
 
     })
     //end team act 09
