@@ -58,7 +58,7 @@ express()
         {
             (async()=>{
                 const result = pool.query(queryText + "'" + pID + "';");
-                cosole.log(result);
+                console.log(result);
                 await pool.end()
             })()
         }
