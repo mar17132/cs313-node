@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const url = require('url')
+var connectionString = '   postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
 const PORT = process.env.PORT || 5000
 
 express()
@@ -49,34 +50,18 @@ express()
 
     })
     .get('/getPerson',function(req,res){
-      /*  var pID = url.parse(req.url,true).query.person;
+        var pID = url.parse(req.url,true).query.person;
         var queryText = 'SELECT * FROM Person WHERE ID=';
 
-        const { Pool } = require('pg')
-        const pool = new Pool();
+        const { Pool, Client } = require('pg')
+        const pool = new Pool({
+            connectionString: connectionString,
+        });
 
-        if(pID != null)
-        {
-            (async () => {
-              const client = await pool.connect()
-              try {
-                const res = await client.query('SELECT * FROM Person WHERE id = $1', [1])
-                console.log(res.rows[0])
-              } finally {
-                client.release()
-              }
-            })().catch(e => console.log(e.stack))
-        }*/
-    const { Pool, Client } = require('pg')
-
-// pools will use environment variables
-// for connection information
-const pool = new Pool()
-
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
+        pool.query('SELECT NOW()', (err, res) => {
+          console.log(err, res)
+          pool.end()
+        })
 
     })
     //end team act 09
