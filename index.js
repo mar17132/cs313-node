@@ -1,8 +1,6 @@
 const express = require('express')
 const path = require('path')
 const url = require('url')
-const { Pool, Client } = require('pg')
-const pool = new Pool();
 const PORT = process.env.PORT || 5000
 
 express()
@@ -54,10 +52,21 @@ express()
         var pID = url.parse(req.url,true).query.person;
         var queryText = 'SELECT * FROM Person WHERE ID=';
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
+        const { Pool } = require('pg')
+        const pool = new Pool();
+
+        if(pID != null)
+        {
+            (async () => {
+              const client = await pool.connect()
+              try {
+                const res = await client.query('SELECT * FROM Person WHERE id = $1', [1])
+                console.log(res.rows[0])
+              } finally {
+                client.release()
+              }
+            })().catch(e => console.log(e.stack))
+        }
     })
     //end team act 09
 
