@@ -1,14 +1,18 @@
 const express = require('express')
 const path = require('path')
 const url = require('url')
+const { Pool, Client } = require('pg')
+const pool = new Pool();
 const PORT = process.env.PORT || 5000
 
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.static(path.join(__dirname, 'html')))
     .use(express.static(path.join(__dirname, 'prove')))
+    .use(express.static(path.join(__dirname, 'project')))
     .set('views', path.join(__dirname, 'views'))
     .set('views', path.join(__dirname, 'prove'))
+    .set('views', path.join(__dirname, 'project'))
     .set('view engine', 'ejs')
 
     //team act 09
@@ -46,6 +50,19 @@ express()
         res.send({results: myresutls});
 
     })
+    .get('/getPerson',function(req,res){
+        var pID = url.parse(req.url,true).query.person;
+        var queryText = 'SELECT * FROM Person WHERE ID=';
+
+        if(pID != null)
+        {
+            (async()=>{
+                const result = pool.query(queryText + "'" + pID + "';");
+                cosole.log(result);
+                await pool.end()
+            })()
+        }
+    })
     //end team act 09
     //prove week9
     .get('/prove9',(req,res) => res.sendfile('prove/week9/week9.html'))
@@ -58,5 +75,9 @@ express()
                    {result: mailrate});
     })
     //end prove week9
+
+    /*###########Project 2###############*/
+    .get('/project2',(req,res) => res.sendfile('project/index.html'))
+    /*###########End Project 2###############*/
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
