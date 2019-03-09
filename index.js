@@ -69,7 +69,7 @@ express()
                 const result = pool.query(queryText + "'" + pID + "';");
                 console.log(result);
                 await pool.end()
-            })()
+            })().catch(e => setImmediate(() => { throw e }))
         }
     })
     //end team act 09
