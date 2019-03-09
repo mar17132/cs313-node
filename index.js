@@ -54,14 +54,14 @@ express()
         var queryText = 'SELECT * FROM Person WHERE ID=';
 
         const { Pool, Client } = require('pg')
-        const pool = new Pool({
+   /*     const pool = new Pool({
             connectionString: connectionString,
         });
 
         pool.query('SELECT NOW()', (err, res) => {
           console.log(err, res)
           pool.end()
-        })
+        })*/
 
         const client = new Client({
   connectionString: connectionString,
