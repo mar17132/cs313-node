@@ -49,7 +49,7 @@ express()
 
     })
     .get('/getPerson',function(req,res){
-        var pID = url.parse(req.url,true).query.person;
+      /*  var pID = url.parse(req.url,true).query.person;
         var queryText = 'SELECT * FROM Person WHERE ID=';
 
         const { Pool } = require('pg')
@@ -66,7 +66,18 @@ express()
                 client.release()
               }
             })().catch(e => console.log(e.stack))
-        }
+        }*/
+    const { Pool, Client } = require('pg')
+
+// pools will use environment variables
+// for connection information
+const pool = new Pool()
+
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
+
     })
     //end team act 09
 
