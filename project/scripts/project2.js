@@ -111,7 +111,7 @@ function ajaxCall(whatPage,value)
                         break;
                     case "results":
                         break;
-                    case default:
+                    default:
                         console.log("Error: Incorrect Ajax call");
                         break;
                 }
