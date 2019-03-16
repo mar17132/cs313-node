@@ -100,8 +100,8 @@ function displayRestaurants(restaurantObj)
 
             nameContent.appendTo(nameCell);
             optionContent.appendTo(optionCell);
-            nameContent.appendTo(newRow);
-            optionContent.appendTo(newRow);
+            nameCell.appendTo(newRow);
+            optionCell.appendTo(newRow);
 
             newRow.appendTo(restTable);
 
