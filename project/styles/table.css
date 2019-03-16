@@ -1,0 +1,99 @@
+
+:root{
+    --table-cell-border: 1px solid black;
+}
+
+.table-div{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+
+.table-row{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /*display: block;*/
+    display: table-row;
+}
+
+
+.table-cell{
+   /* display: inline-block;*/
+    display: table-cell;
+    border: var(--table-cell-border);
+    margin-right: -4px;
+    border-bottom: none;
+    border-right: none;
+}
+
+
+.table-cell:last-child{
+    border-right: var(--table-cell-border);
+}
+
+
+.table-row:last-child .table-cell{
+    border-bottom: var(--table-cell-border);
+}
+
+
+.table-cell-content{
+    width: 120px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1em;
+}
+
+
+.table-cell-head-content{
+    width: 120px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+a.addContent{
+    text-decoration: none;
+    outline: none;
+    display: block;
+}
+
+a.addContent:hover{
+    text-decoration: none;
+    outline: none;
+    display: block;
+}
+
+.selectValueChk{
+    margin: 5px;
+}
+
+
+.contentButtons{
+  /*  display: inline-block;
+    padding: 0;
+    margin: 0;*/
+}
+
+
+.buttonVisible{
+    visibility: hidden;
+}
+
+.hidden{
+    display: none;
+}
+.patch-table{
+    width: 600px;
+}

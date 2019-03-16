@@ -1,0 +1,53 @@
+
+:root{
+    --menu-border: 3px solid silver;
+    --menu-hover: silver;
+}
+
+.menu-ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.menu-li{
+    display: inline-block;
+}
+
+
+.menu-div{
+    margin-top: 50px;
+    font-size: 1.3em;
+    border-top: var(--menu-border);
+    border-bottom: var(--menu-border);
+}
+
+
+.menu-a{
+    padding: 20.5px 40px;
+    color: black;
+    text-decoration: none;
+    outline: none;
+    display: block;
+    cursor: pointer;
+}
+
+
+.menu-a:hover{
+    background-color:var(--menu-hover);
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    outline: none;
+}
+
+
+.menu-selected{
+    background-color:var(--menu-hover);
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    outline: none;
+}
+

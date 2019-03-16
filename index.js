@@ -1,7 +1,8 @@
 const express = require('express')
 const path = require('path')
 const url = require('url')
-var connectionString = 'postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
+const { Pool, Client } = require('pg')
+const connectionString = 'postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
 const PORT = process.env.PORT || 5000
 
 express()
@@ -14,86 +15,62 @@ express()
     .set('views', path.join(__dirname, 'project'))
     .set('view engine', 'ejs')
 
-    //team act 09
-    .get('/team09', (req, res) => res.sendfile('html/static_form.html'))
-    .get('/math', function(req, res){
-        var number1 = url.parse(req.url,true).query.num1;
-        var number2 = url.parse(req.url,true).query.num2;
-        var operation = url.parse(req.url,true).query.oper;
-
-        res.render('pages/index.ejs',{num1 : number1, num2 : number2, operand : operation});
-
-    })
-    .get('/math_service', function(req, res){
-        var number1 = parseInt(url.parse(req.url,true).query.num1);
-        var number2 = parseInt(url.parse(req.url,true).query.num2);
-        var operation = url.parse(req.url,true).query.oper;
-        var myresutls = 0;
-
-        if(operation == "add")
-        {
-            myresutls = number1 + number2;
-        }
-        else if(operation == "sub")
-        {
-            myresutls = number1 - number2;
-        }
-        else if(operation == "mul")
-        {
-            myresutls = number1 * number2;
-        }
-        else if(operation == "div")
-        {
-            myresutls = number1 / number2;
-        }
-        res.send({results: myresutls});
-
-    })
-    .get('/getPerson',function(req,res){
-        var pID = url.parse(req.url,true).query.person;
-        var queryText = 'SELECT * FROM Person WHERE ID=';
-
-        const { Pool, Client } = require('pg')
-   /*     const pool = new Pool({
-            connectionString: connectionString,
-        });
-
-        pool.query('SELECT NOW()', (err, res) => {
-          console.log(err, res)
-          pool.end()
-        })*/
-
-        const client = new Client({
-  connectionString: connectionString,
-})
-client.connect()
-
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
-})
-
-    })
-    //end team act 09
-
-
-
-
-
-    //prove week9
-    .get('/prove9',(req,res) => res.sendfile('prove/week9/week9.html'))
-    .get('/getRate',function(req,res){
-        var cal = require(path.join(__dirname,'prove/week9/week9.js'));
-
-        var mailrate = cal.calculateRate(url.parse(req.url,true).query.weight,
-                                         url.parse(req.url,true).query.letter);
-        res.render(path.join(__dirname,'prove/week9/week9.ejs'),
-                   {result: mailrate});
-    })
-    //end prove week9
-
     /*###########Project 2###############*/
     .get('/project2',(req,res) => res.sendfile('project/index.html'))
+    .get('/restaurants',function(req,res){
+
+        var myVar = url.parse(req.url,true).query;
+        var queryText = "SELECT * FROM restaurants";
+
+        if(myVar.id != null)
+        {
+            queryText += " WHERE id='" + myVar.id + "';";
+        }
+        else
+        {
+            queryText += ";";
+        }
+
+        queryDB(queryText,function(err,queryRes){
+
+            if(err || queryRes == null)
+            {
+                res.status(500).json({success:false,data:err});
+            }
+            else
+            {
+                if(queryRes.length < 1)
+                {
+                    res.status(200).json({message:"No Restaurants found"});
+                }
+                else
+                {
+                    res.status(200).json(queryRes);
+                }
+            }
+
+        });
+
+    })
+
     /*###########End Project 2###############*/
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
+function queryDB(queryText,callbackfunction)
+{
+    var pool = new Pool({ConnectionString:connectionString});
+
+    pool.query(queryText,function(err,results){
+
+        if(err)
+        {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+
+        callbackfunction(null,results.rows);
+
+    });
+}
 
