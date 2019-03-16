@@ -211,7 +211,7 @@ $(document).ready(function(){
     addItem.on('click',function(){
         page = $("#addType").val();
         name = $("#restName").val();
-        ajaxCall("add","name=" + name + "&addTyp=" + page);
+        ajaxCall("add","name=" + name + "&addType=" + page);
     });
 
 });
