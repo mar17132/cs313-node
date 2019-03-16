@@ -74,6 +74,18 @@ function getRestaurants()
 }
 
 
+function removeKeep(elem,keepNum)
+{
+    childArray = elem.children();
+
+    for(i = childArray.length; i > keepNum; i--)
+    {
+        childArray.eq(i).remove();
+    }
+
+}
+
+
 function displayRestaurants(restaurantObj)
 {
     var restList = $(".list-resturants");
@@ -84,7 +96,8 @@ function displayRestaurants(restaurantObj)
         hideShowRemClass(restList,restDisplay,'hidden');
 
         restTable = $("#restTable");
-        restTable.empty();
+        removeKeep(restTable,2);
+
         $.each(restaurantObj,function(index,value){
             newRow = $("<ul class='table-row row'></ul>");
 
