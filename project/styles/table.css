@@ -63,7 +63,7 @@
 }
 
 
-a.addContent{
+/*a.addContent{
     text-decoration: none;
     outline: none;
     display: block;
@@ -81,9 +81,9 @@ a.addContent:hover{
 
 
 .contentButtons{
-  /*  display: inline-block;
+    display: inline-block;
     padding: 0;
-    margin: 0;*/
+    margin: 0;
 }
 
 
@@ -96,4 +96,4 @@ a.addContent:hover{
 }
 .patch-table{
     width: 600px;
-}
+}*/

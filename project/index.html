@@ -50,7 +50,41 @@
 
             </div>
             <div class="restaurants-display content-display">
+                <h3>Resturants</h3>
+                <div class="list-resturants hidden">
+                    <div id="restTable" class="table-div">
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
+                                    <input id="addRestBtn" type="button"
+                                           value="Add Resturant"/>
+                                </div>
+                            </li>
 
+                        </ul>
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Name
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Options
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="display-resturant hidden" >
+                    <h3>Add Resturant</h3>
+                    <form >
+                        <label>Name</label>
+                        <input id="restName" name="restName" type="text" />
+                        <input type="hidden" id="addType" name="addType" value="resturant"/>
+                        <input type="submit" class="addButton" value="Add"/>
+                    </form>
+                </div>
             </div>
             <div class="create-vote-display content-display">
 

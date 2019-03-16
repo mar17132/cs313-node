@@ -2,6 +2,7 @@
 var menuButtons = $('.menu-a');
 var contentDisplay = $('.content-display');
 var pageTitle = $('.title'); //update the title on the page not tab
+var addItem = $('.addButton');
 
 var pagesObj = {
     currentPageObj:null,
@@ -72,11 +73,52 @@ function getRestaurants()
 
 }
 
-function displayRestaurantList(restaurantObj)
+
+function displayRestaurants(restaurantObj)
 {
-    console.log(restaurantObj);
+    var restList = $(".list-resturants");
+    var restDisplay = $(".display-resturant");
+
+    if(restaurantObj.length > 1)
+    {
+        hideShowRemClass(restList,restDisplay,'hidden');
+        restTable = $("#restTable");
+        $.each(restaurantObj,function(index,value){
+            newRow = $("<ul class='table-row row'></ul>");
+
+            nameCell = $("<li class='table-cell col' ></li>");
+            optionCell = $("<li class='table-cell col' ></li>");
+
+            nameContent = $("<div class='table-cell-content'>");
+            nameContent.text(value.name);
+
+            optionContent = $("<div class='table-cell-content'>");
+            editButton = $("<input value='Edit' type='button' class='rest-view-button'/>");
+            hiddenId = $("<input value='" + value.id + "' type='hidden' class='rest-id'/>");
+            editButton.appendTo(optionContent);
+            hiddenId.appendTo(optionContent);
+
+            nameContent.appendTo(nameCell);
+            optionContent.appendTo(optionCell);
+            nameContent.appendTo(newRow);
+            optionContent.appendTo(newRow);
+
+            newRow.appendTo(restTable);
+
+        });
+    }
+    else
+    {
+        hideShowRemClass(restDisplay,restList,'hidden');
+    }
 }
 
+
+function hideShowRemClass(showElem,hideElm,remClass)
+{
+    showElem.removeClass(remClass);
+    hideElm.addClass(remClass);
+}
 
 function ajaxCall(whatPage,value)
 {
@@ -98,12 +140,14 @@ function ajaxCall(whatPage,value)
             {
                 returnJsonObj = JSON.parse(this.responseText);
 
+                whatPage = (whatPage == "add") ? returnJsonObj.pageType : whatPage;
+
                 switch(whatPage.toLowerCase())
                 {
                     case "home":
                         break;
                     case "restaurants":
-                        displayRestaurantList(returnJsonObj);
+                        displayRestaurants(returnJsonObj);
                         break;
                     case "create vote":
                         break;
@@ -137,6 +181,17 @@ $(document).ready(function(){
         //config the menu click
        // menuButtons.removeClass('menu-selected');
        // $(this).addClass('menu-selected');
+    });
+
+    $('.restaurants-display').on('click','#addRestBtn',function(){
+        hideShowRemClass(restDisplay,restList,'hidden');
+
+    });
+
+    addItem.on('click',function(){
+        page = $("#addType").val();
+        name = $("#restName").val();
+        ajaxCall("add","name=" + name + "&addTyp=" + page);
     });
 
 });
