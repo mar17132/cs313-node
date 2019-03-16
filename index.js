@@ -62,7 +62,7 @@ express()
         {
             if(myVar.addType == "resturant")
             {
-                queryText += "restaurants(Name) VALUES('" + myVar.name + "');"
+                queryText += "restaurants(Name) VALUES('" + myVar.name + "');";
             }
         }
 
