@@ -56,6 +56,7 @@ express()
     .get('/add',function(req,res){
 
         var myVar = url.parse(req.url,true).query;
+        console.log(myVar);
         var queryText = "INSERT INTO ";
 
         if(myVar.addType != null)

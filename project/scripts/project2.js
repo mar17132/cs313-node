@@ -82,7 +82,9 @@ function displayRestaurants(restaurantObj)
     if(restaurantObj.length > 1)
     {
         hideShowRemClass(restList,restDisplay,'hidden');
+
         restTable = $("#restTable");
+        restTable.empty();
         $.each(restaurantObj,function(index,value){
             newRow = $("<ul class='table-row row'></ul>");
 
