@@ -42,8 +42,11 @@ h4{
 .display-resturant{
     margin-top: 10px;
     width: 500px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-form.display-resturant{
+.display-resturant form{
     margin-top: 20px;
+
 }
