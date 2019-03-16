@@ -86,7 +86,7 @@ function ajaxCall(whatPage,value)
 
     if(whatPage != null)
     {
-        sendString = "/" + whatPage.toLowerCase;
+        sendString = "/" + whatPage.toLowerCase();
 
         if(value != null)
         {
@@ -98,7 +98,7 @@ function ajaxCall(whatPage,value)
             {
                 returnJsonObj = JSON.parse(this.responseText);
 
-                switch(whatPage.toLowerCase)
+                switch(whatPage.toLowerCase())
                 {
                     case "home":
                         break;
