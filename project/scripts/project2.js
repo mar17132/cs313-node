@@ -132,6 +132,7 @@ $(document).ready(function(){
                                              .text().trim().toLowerCase());
         pagesObj.setCurrentPageObj(thisPage.number);
         setDisplayPage(thisPage.display);
+        apiCall(thisPage.name,null);
 
         //config the menu click
        // menuButtons.removeClass('menu-selected');
