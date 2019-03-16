@@ -59,18 +59,19 @@ express()
 
 function queryDB(queryText,callbackfunction)
 {
-    var pool = new Pool({ConnectionString:connectionString});
+    var client = new Client({ConnectionString:connectionString});
 
-    pool.query(queryText,function(err,results){
+    client.query(queryText,function(err,results){
 
         if(err)
         {
             console.log("Error in query: ")
             console.log(err);
         }
-
+        client.end();
         callbackfunction(null,results.rows);
 
     });
+
 }
 
