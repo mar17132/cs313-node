@@ -68,7 +68,6 @@ function queryDB(queryText,callbackfunction)
             console.log("Error in query: ")
             console.log(err);
         }
-        client.end();
         callbackfunction(null,results.rows);
 
     });
