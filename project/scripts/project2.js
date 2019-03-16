@@ -72,23 +72,54 @@ function getRestaurants()
 
 }
 
+function displayRestaurantList(restaurantObj)
+{
+    console.log(restaurantObj);
+}
 
-function ajaxCall(whatPage, )
+
+function ajaxCall(whatPage,value)
 {
     var returnJsonObj = null;
-
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200)
+    var sendString = "";
+
+    if(whatPage != null)
+    {
+        sendString = "/" + whatPage.toLowerCase;
+
+        if(value != null)
         {
-            returnJsonObj = JSON.parse(this.responseText);
+            sendString += "?" + value;
         }
-    };
-    xhttp.open("GET", "/math_service?" + sendString, true);
-    xhttp.send();
 
-    return returnJsonObj;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                returnJsonObj = JSON.parse(this.responseText);
 
+                switch(whatPage.toLowerCase)
+                {
+                    case "home":
+                        break;
+                    case "restaurants":
+                        displayRestaurantList(returnJsonObj);
+                        break;
+                    case "create vote":
+                        break;
+                    case "vote":
+                        break;
+                    case "results":
+                        break;
+                    case default:
+                        console.log("Error: Incorrect Ajax call");
+                        break;
+                }
+            }
+        };
+        xhttp.open("GET",sendString, true);
+        xhttp.send();
+    }
 }
 
 
