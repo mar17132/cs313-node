@@ -93,7 +93,7 @@ function displayRestaurants(restaurantObj)
             nameContent.text(value.name);
 
             optionContent = $("<div class='table-cell-content'>");
-            editButton = $("<input value='Edit' type='button' class='rest-view-button'/>");
+            editButton = $("<input value='Remove' type='button' class='rest-remove-button'/>");
             hiddenId = $("<input value='" + value.id + "' type='hidden' class='rest-id'/>");
             editButton.appendTo(optionContent);
             hiddenId.appendTo(optionContent);
@@ -184,7 +184,12 @@ $(document).ready(function(){
     });
 
     $('.restaurants-display').on('click','#addRestBtn',function(){
-        hideShowRemClass(restDisplay,restList,'hidden');
+        hideShowRemClass($('.display-resturant'),$('.list-resturants'),'hidden');
+
+    });
+
+    $('.restaurants-display').on('click','.rest-remove-button',function(){
+        hideShowRemClass($('.display-resturant'),$('.list-resturants'),'hidden');
 
     });
 
