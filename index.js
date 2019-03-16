@@ -61,6 +61,7 @@ function queryDB(queryText,callbackfunction)
 {
     var client = new Client({ConnectionString:connectionString});
 
+    client.connect();
     client.query(queryText,function(err,results){
 
         if(err)
