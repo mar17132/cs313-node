@@ -59,12 +59,11 @@ express()
 
 function queryDB(queryText,callbackfunction)
 {
-    const client = new Client({
-        connectionString: connectionString,
-    });
-
+    var client = new Client({connectionString: connectionString,});
     client.connect();
+
     console.log(queryText);
+
     client.query(queryText,function(err,results){
 
         if(err)
