@@ -62,6 +62,7 @@ function queryDB(queryText,callbackfunction)
     var client = new Client({ConnectionString:connectionString});
 
     client.connect();
+    console.log(queryText);
     client.query(queryText,function(err,results){
 
         if(err)
@@ -69,7 +70,10 @@ function queryDB(queryText,callbackfunction)
             console.log("Error in query: ")
             console.log(err);
         }
-        callbackfunction(null,results.rows);
+        else
+        {
+            callbackfunction(null,results.rows);
+        }
 
     });
 
