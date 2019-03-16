@@ -59,7 +59,9 @@ express()
 
 function queryDB(queryText,callbackfunction)
 {
-    var client = new Client({ConnectionString:connectionString});
+    const client = new Client({
+        connectionString: connectionString,
+    });
 
     client.connect();
     console.log(queryText);
@@ -75,6 +77,7 @@ function queryDB(queryText,callbackfunction)
             callbackfunction(null,results.rows);
         }
 
+        client.end();
     });
 
 }
