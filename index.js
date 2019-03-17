@@ -61,7 +61,7 @@ express()
 
         if(myVar.addType != null)
         {
-            if(myVar.addType == "resturant")
+            if(myVar.addType == "restaurants")
             {
                 queryText += "restaurants(Name) VALUES('" + myVar.name + "');";
             }
@@ -72,7 +72,6 @@ express()
 
             if(err || queryRes == null)
             {
-                console.log('test1');
                 res.status(500).json({success:false,data:err});
             }
             else
