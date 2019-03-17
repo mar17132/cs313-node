@@ -155,24 +155,29 @@ function ajaxCall(whatPage,value)
             {
                 returnJsonObj = JSON.parse(this.responseText);
 
-                whatPage = (whatPage == "add") ? returnJsonObj.pageType : whatPage;
-
-                switch(whatPage.toLowerCase())
+                if(returnJsonObj.pageType != null)
                 {
-                    case "home":
-                        break;
-                    case "restaurants":
-                        displayRestaurants(returnJsonObj);
-                        break;
-                    case "create vote":
-                        break;
-                    case "vote":
-                        break;
-                    case "results":
-                        break;
-                    default:
-                        console.log("Error: Incorrect Ajax call");
-                        break;
+                    ajaxCall(returnJsonObj.pageType,null);
+                }
+                else
+                {
+                    switch(whatPage.toLowerCase())
+                    {
+                        case "home":
+                            break;
+                        case "restaurants":
+                            displayRestaurants(returnJsonObj);
+                            break;
+                        case "create vote":
+                            break;
+                        case "vote":
+                            break;
+                        case "results":
+                            break;
+                        default:
+                            console.log("Error: Incorrect Ajax call");
+                            break;
+                    }
                 }
             }
         };
