@@ -110,8 +110,10 @@ function displayRestaurants(restaurantObj)
             optionContent = $("<div class='table-cell-content'>");
             editButton = $("<input value='Remove' type='button' class='rest-remove-button'/>");
             hiddenId = $("<input value='" + value.id + "' type='hidden' class='rest-id'/>");
+            removeType = $("<input value='restaurants' type='hidden' class='removeType'/>");
             editButton.appendTo(optionContent);
             hiddenId.appendTo(optionContent);
+            removeType.appendTo(optionContent);
 
             nameContent.appendTo(nameCell);
             optionContent.appendTo(optionCell);
@@ -134,6 +136,13 @@ function hideShowRemClass(showElem,hideElm,remClass)
     showElem.removeClass(remClass);
     hideElm.addClass(remClass);
 }
+
+
+function clearTextBox(txtBox)
+{
+    txtBox.val("");
+}
+
 
 function ajaxCall(whatPage,value)
 {
@@ -209,13 +218,17 @@ $(document).ready(function(){
     });
 
     $('.restaurants-display').on('click','.rest-remove-button',function(){
-        hideShowRemClass($('.display-resturant'),$('.list-resturants'),'hidden');
+        restId = $(this).next('.rest-id').val();
+        page = $(this).next('.removeType').val();
+
+        ajaxCall("remove","id=" + restId + "&removeType=" + page);
 
     });
 
     addItem.on('click',function(){
         page = $("#addType").val();
         name = $("#restName").val();
+        clearTextBox($("#restName"));
         ajaxCall("add","name=" + name + "&addType=" + page);
     });
 
