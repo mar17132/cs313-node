@@ -219,7 +219,7 @@ $(document).ready(function(){
 
     $('.restaurants-display').on('click','.rest-remove-button',function(){
         restId = $(this).next('.rest-id').val();
-        page = $(this).next('.removeType').val();
+        page = $(this).find('.removeType').val();
 
         ajaxCall("remove","id=" + restId + "&removeType=" + page);
 
