@@ -78,7 +78,7 @@ function removeKeep(elem,keepNum)
 {
     childArray = elem.children();
 
-    for(i = childArray.length; i > keepNum; i--)
+    for(i = (childArray.length - 1); i >= keepNum; i--)
     {
         childArray.eq(i).remove();
     }

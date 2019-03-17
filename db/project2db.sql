@@ -12,8 +12,8 @@ CREATE TABLE category(
 
 CREATE TABLE rest_to_cat(
     ID        SERIAL PRIMARY KEY,
-    rest_id   INT REFERENCES restaurants(ID),
-    cat_id    INT REFERENCES category(ID)
+    rest_id   INT REFERENCES restaurants(ID) ON DELETE CASCADE,
+    cat_id    INT REFERENCES category(ID) ON DELETE CASCADE
 );
 
 
@@ -27,16 +27,16 @@ CREATE TABLE vote_lunch(
 
 CREATE TABLE rest_to_vote_lunch(
     ID               		 SERIAL PRIMARY KEY,
-    rest_id               INT REFERENCES restaurants(ID),
-    vote_lunch_id    INT REFERENCES vote_lunch(ID)
+    rest_id               INT REFERENCES restaurants(ID) ON DELETE CASCADE,
+    vote_lunch_id    INT REFERENCES vote_lunch(ID) ON DELETE CASCADE
 );
 
 
 CREATE TABLE vote(
     ID               		SERIAL PRIMARY KEY,
     userEmail        	VARCHAR(180),    /*This needs to unqie for each vote*/
-    rest_id          	 INT REFERENCES restaurants(ID),
-    vote_lunch_id    INT REFERENCES vote_lunch(ID)
+    rest_id          	 INT REFERENCES restaurants(ID) ON DELETE CASCADE,
+    vote_lunch_id    INT REFERENCES vote_lunch(ID) ON DELETE CASCADE
 );
 
 
