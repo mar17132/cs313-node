@@ -72,6 +72,7 @@ express()
 
             if(err || queryRes == null)
             {
+                console.log('test1');
                 res.status(500).json({success:false,data:err});
             }
             else
