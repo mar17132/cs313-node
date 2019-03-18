@@ -311,6 +311,31 @@ ON restaurants.ID = rest_to_cat.rest_id
 WHERE category.Name = '';
 
 
+--Get all restaurants and category by restaurants id
+SELECT restaurants.ID, restaurants.Name,
+STRING_AGG(category.id::CHARACTER VARYING, ',') AS cat_id,
+STRING_AGG(category.name, ',') AS cat_name
+FROM category
+JOIN rest_to_cat
+ON rest_to_cat.cat_id = category.ID
+JOIN restaurants
+ON restaurants.ID = rest_to_cat.rest_id
+WHERE restaurants.ID = '2'
+GROUP BY restaurants.ID;
+
+
+--Get all restaurants and category
+SELECT restaurants.ID, restaurants.Name,
+STRING_AGG(category.id::CHARACTER VARYING, ',') AS cat_id,
+STRING_AGG(category.name, ',') AS cat_name
+FROM category
+JOIN rest_to_cat
+ON rest_to_cat.cat_id = category.ID
+JOIN restaurants
+ON restaurants.ID = rest_to_cat.rest_id
+GROUP BY restaurants.ID;
+
+
 --Get all restaurants in vote
 SELECT restaurants.ID, restaurants.Name,
 vote_lunch.lunchDate,vote_lunch.votingStart, vote_lunch.votingEnd

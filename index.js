@@ -20,15 +20,23 @@ express()
     .get('/restaurants',function(req,res){
 
         var myVar = url.parse(req.url,true).query;
-        var queryText = "SELECT * FROM restaurants";
+        var queryText = "SELECT restaurants.ID, restaurants.Name,\
+                    STRING_AGG(category.id::CHARACTER VARYING, ',') AS cat_id,\
+                        STRING_AGG(category.name, ',') AS cat_name\
+                        FROM category\
+                        JOIN rest_to_cat\
+                        ON rest_to_cat.cat_id = category.ID\
+                        JOIN restaurants\
+                        ON restaurants.ID = rest_to_cat.rest_id";
 
         if(myVar.id != null)
         {
-            queryText += " WHERE id='" + myVar.id + "';";
+            queryText += " WHERE restaurants.ID='" + myVar.id + "'\
+                           GROUP BY restaurants.ID;";
         }
         else
         {
-            queryText += ";";
+            queryText += "GROUP BY restaurants.ID;";
         }
 
         queryDB(queryText,function(err,queryRes){

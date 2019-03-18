@@ -102,10 +102,14 @@ function displayRestaurants(restaurantObj)
             newRow = $("<ul class='table-row row'></ul>");
 
             nameCell = $("<li class='table-cell col' ></li>");
+            catCell = $("<li class='table-cell col' ></li>");
             optionCell = $("<li class='table-cell col' ></li>");
 
             nameContent = $("<div class='table-cell-content'>");
             nameContent.text(value.name);
+
+            catContent = $("<div class='table-cell-content'>");
+            catContent.text(value.cat_name);
 
             optionContent = $("<div class='table-cell-content'>");
             editButton = $("<input value='Remove' type='button' class='rest-remove-button'/>");
@@ -116,8 +120,10 @@ function displayRestaurants(restaurantObj)
             removeType.appendTo(optionContent);
 
             nameContent.appendTo(nameCell);
+            catContent.appendTo(catCell);
             optionContent.appendTo(optionCell);
             nameCell.appendTo(newRow);
+            catCell.appendTo(newRow);
             optionCell.appendTo(newRow);
 
             newRow.appendTo(restTable);
