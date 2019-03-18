@@ -121,6 +121,28 @@ express()
 
 
     })
+   .get('/categories',function(req,res){
+
+        var myVar = url.parse(req.url,true).query;
+        console.log(myVar);
+        var queryText = "SELECT * FROM category;";
+
+        queryDB(queryText,function(err,queryRes){
+
+            if(err || queryRes == null)
+            {
+                res.status(500).json({success:false,data:err});
+            }
+            else
+            {
+                queryRes['catPage'] = myVar.pageType;
+                res.status(200).json(queryRes);
+            }
+
+        });
+
+
+    })
 
 
     /*###########End Project 2###############*/

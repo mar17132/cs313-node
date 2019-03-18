@@ -91,13 +91,27 @@
                         </ul>
                     </div>
                 </div>
-                <div class="display-resturant hidden" >
-                    <h4>Add Resturant</h4>
+                <div class="add-resturant hidden" >
+                    <h4><span id="addEdit-name">Add</span> Resturant</h4>
                     <form >
-                        <label>Name</label>
-                        <input id="restName" name="restName" type="text" />
-                        <input type="hidden" id="addType" name="addType" value="restaurants"/>
-                        <input type="button" class="addButton" value="Add"/>
+                        <ul class="rest-ul-form">
+                            <li>
+                                <label>Name</label>
+                            </li>
+                            <li>
+                                <input id="restName" name="restName" type="text" />
+                                <input type="hidden" id="addType" name="addType" value="restaurants"/>
+                            </li>
+                            <li>
+                                <label>Categories</label>
+                                <div class="rest-cats">
+
+                                </div>
+                            </li>
+                            <li>
+                                <input type="button" class="addButton" value="Add"/>
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>

@@ -3,6 +3,11 @@ var menuButtons = $('.menu-a');
 var contentDisplay = $('.content-display');
 var pageTitle = $('.title'); //update the title on the page not tab
 var addItem = $('.addButton');
+var editAddTitle = $('#addEdit-name');
+
+//resturants
+var restList = $(".list-resturants");
+var restAdd = $(".add-resturant");
 
 var pagesObj = {
     currentPageObj:null,
@@ -88,12 +93,10 @@ function removeKeep(elem,keepNum)
 
 function displayRestaurants(restaurantObj)
 {
-    var restList = $(".list-resturants");
-    var restDisplay = $(".display-resturant");
 
     if(restaurantObj.length > 1)
     {
-        hideShowRemClass(restList,restDisplay,'hidden');
+        hideShowRemClass(restList,restAdd,'hidden');
 
         restTable = $("#restTable");
         removeKeep(restTable,2);
@@ -112,10 +115,12 @@ function displayRestaurants(restaurantObj)
             catContent.text(value.cat_name);
 
             optionContent = $("<div class='table-cell-content'>");
-            editButton = $("<input value='Remove' type='button' class='rest-remove-button'/>");
+            removeButton = $("<input value='Remove' type='button' class='rest-remove-button restBtn'/>");
+            editButton = $("<input value='Edit' type='button' class='rest-edit-button restBtn'/>");
             hiddenId = $("<input value='" + value.id + "' type='hidden' class='rest-id'/>");
             removeType = $("<input value='restaurants' type='hidden' class='removeType'/>");
             editButton.appendTo(optionContent);
+            removeButton.appendTo(optionContent);
             hiddenId.appendTo(optionContent);
             removeType.appendTo(optionContent);
 
@@ -132,7 +137,31 @@ function displayRestaurants(restaurantObj)
     }
     else
     {
-        hideShowRemClass(restDisplay,restList,'hidden');
+        hideShowRemClass(restAdd,restList,'hidden');
+    }
+}
+
+
+function editItems(page,jsonObjs)
+{
+    if(page == "restaurants")
+    {
+        hideShowRemClass(restAdd,restList,'hidden');
+        var disDiv = $('.rest-cats');
+        editAddTitle.text("Edit");
+        newUL = $("<ul class='ul-cat-dis'></ul>");
+        $.each(jsonObjs,function(index,value){
+            newLI = $("<li></li>");
+            newCheck = $("<input type='checkbox' value='" + value.id + "' class='catSelect'/>");
+            newSpan = $("<span class='span-cat-select'>" + value.name + "</span>");
+
+            newCheck.appendTo(newLI);
+            newSpan.appendTo(newLI);
+            newLI.appendTo(newUL);
+
+        });
+
+        newLI.appendTo(disDiv);
     }
 }
 
@@ -189,6 +218,9 @@ function ajaxCall(whatPage,value)
                             break;
                         case "results":
                             break;
+                        case "categories":
+                            editItems(returnJsonObj.catPage,returnJsonObj);
+                            break;
                         default:
                             console.log("Error: Incorrect Ajax call");
                             break;
@@ -219,15 +251,23 @@ $(document).ready(function(){
     });
 
     $('.restaurants-display').on('click','#addRestBtn',function(){
-        hideShowRemClass($('.display-resturant'),$('.list-resturants'),'hidden');
-
+        hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
+        editAddTitle.text("Add");
     });
 
     $('.restaurants-display').on('click','.rest-remove-button',function(){
-        restId = $(this).next('.rest-id').val();
+        restId = $(this).nextAll('.rest-id').val();
         page = $(this).nextAll('.removeType').val();
 
         ajaxCall("remove","id=" + restId + "&removeType=" + page);
+
+    });
+
+
+    $('.restaurants-display').on('click','.rest-edit-button',function(){
+        page = $(this).nextAll('.removeType').val();
+
+        ajaxCall("categories","pageType=" + page);
 
     });
 
