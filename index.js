@@ -20,17 +20,19 @@ express()
     .get('/restaurants',function(req,res){
 
         var myVar = url.parse(req.url,true).query;
-        var queryText = 'SELECT restaurants.ID, restaurants.Name, " +
-             "STRING_AGG(category.id::CHARACTER VARYING, ',') AS cat_id, " +
-             "STRING_AGG(category.name, ',') AS cat_name " +
-             "FROM category JOIN rest_to_cat " +
-             "ON rest_to_cat.cat_id = category.ID JOIN restaurants " +
-             "ON restaurants.ID = rest_to_cat.rest_id";
+        var queryText = "SELECT restaurants.ID, restaurants.Name,\
+                    STRING_AGG(category.id::CHARACTER VARYING, ',') AS cat_id,\
+                        STRING_AGG(category.name, ',') AS cat_name\
+                        FROM category\
+                        JOIN rest_to_cat\
+                        ON rest_to_cat.cat_id = category.ID\
+                        JOIN restaurants\
+                        ON restaurants.ID = rest_to_cat.rest_id";
 
         if(myVar.id != null)
         {
-            queryText += " WHERE restaurants.ID='" + myVar.id + "'" +
-                           " GROUP BY restaurants.ID;";
+            queryText += " WHERE restaurants.ID='" + myVar.id + "'\
+                           GROUP BY restaurants.ID;";
         }
         else
         {
@@ -130,7 +132,7 @@ function queryDB(queryText,callbackfunction)
     var client = new Client({connectionString: connectionString,});
     client.connect();
 
-    console.log(queryText);
+    console.log("query = " + queryText);
 
     client.query(queryText,function(err,results){
 
