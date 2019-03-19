@@ -53,9 +53,13 @@ h4{
 
 .rest-ul-form{
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 
 .add-resturant{
     width: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
