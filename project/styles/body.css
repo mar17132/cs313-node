@@ -50,3 +50,12 @@ h4{
     margin-top: 25px;
 
 }
+
+.rest-ul-form{
+    list-style-type: none;
+}
+
+
+.add-resturant{
+    width: 500px;
+}
