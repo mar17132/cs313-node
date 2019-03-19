@@ -166,6 +166,30 @@ function editItems(page,jsonObjs)
 }
 
 
+function addItems(page,jsonObjs)
+{
+    if(page == "restaurants")
+    {
+        hideShowRemClass(restAdd,restList,'hidden');
+        var disDiv = $('.rest-cats');
+        editAddTitle.text("Edit");
+        newUL = $("<ul class='ul-cat-dis'></ul>");
+        $.each(jsonObjs,function(index,value){
+            newLI = $("<li></li>");
+            newCheck = $("<input type='checkbox' value='" + value.id + "' class='catSelect'/>");
+            newSpan = $("<span class='span-cat-select'>" + value.name + "</span>");
+
+            newCheck.appendTo(newLI);
+            newSpan.appendTo(newLI);
+            newLI.appendTo(newUL);
+
+        });
+
+        newLI.appendTo(disDiv);
+    }
+}
+
+
 function hideShowRemClass(showElem,hideElm,remClass)
 {
     showElem.removeClass(remClass);
@@ -218,9 +242,9 @@ function ajaxCall(whatPage,value)
                             break;
                         case "results":
                             break;
-                        case "categories":
+                      /*  case "categories":
                             editItems(returnJsonObj.catPage,returnJsonObj);
-                            break;
+                            break;*/
                         default:
                             console.log("Error: Incorrect Ajax call");
                             break;
@@ -267,7 +291,7 @@ $(document).ready(function(){
     $('.restaurants-display').on('click','.rest-edit-button',function(){
         page = $(this).nextAll('.removeType').val();
 
-        ajaxCall("categories","pageType=" + page);
+       // ajaxCall("categories","pageType=" + page);
 
     });
 
