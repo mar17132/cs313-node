@@ -135,8 +135,8 @@ express()
             }
             else
             {
-                queryRes['page'] = myVar.pageType;
-                res.status(200).json(queryRes);
+                //queryRes['page'] = myVar.pageType;
+                res.status(200).json({cats:queryRes,page:myVar.pageType});
             }
 
         });
