@@ -289,7 +289,6 @@ function displayCheckbox(obj)
 
     newCheck.appendTo(newLI);
     newSpan.appendTo(newLI);
-    newLI.appendTo(newUL);
 
     return newLI;
 
