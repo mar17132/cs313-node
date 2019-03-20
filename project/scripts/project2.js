@@ -329,7 +329,7 @@ $(document).ready(function(){
     $('.restaurants-display').on('click','.rest-edit-button',function(){
         hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
         page = $(this).nextAll('.removeType').val();
-       ajaxCallItems("categories","pageType=" + page, catSetup(page,obj));
+       ajaxCallItems("categories","pageType=" + page, catSetup);
 
     });
 
