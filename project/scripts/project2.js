@@ -166,30 +166,6 @@ function editItems(page,jsonObjs)
 }
 
 
-function addItems(page,jsonObjs)
-{
-    if(page == "restaurants")
-    {
-        hideShowRemClass(restAdd,restList,'hidden');
-        var disDiv = $('.rest-cats');
-        editAddTitle.text("Edit");
-        newUL = $("<ul class='ul-cat-dis'></ul>");
-        $.each(jsonObjs,function(index,value){
-            newLI = $("<li></li>");
-            newCheck = $("<input type='checkbox' value='" + value.id + "' class='catSelect'/>");
-            newSpan = $("<span class='span-cat-select'>" + value.name + "</span>");
-
-            newCheck.appendTo(newLI);
-            newSpan.appendTo(newLI);
-            newLI.appendTo(newUL);
-
-        });
-
-        newLI.appendTo(disDiv);
-    }
-}
-
-
 function hideShowRemClass(showElem,hideElm,remClass)
 {
     showElem.removeClass(remClass);
@@ -242,9 +218,6 @@ function ajaxCall(whatPage,value)
                             break;
                         case "results":
                             break;
-                      /*  case "categories":
-                            editItems(returnJsonObj.catPage,returnJsonObj);
-                            break;*/
                         default:
                             console.log("Error: Incorrect Ajax call");
                             break;
@@ -255,6 +228,71 @@ function ajaxCall(whatPage,value)
         xhttp.open("GET",sendString, true);
         xhttp.send();
     }
+}
+
+
+function ajaxCallItems(whatPage,value,callBack)
+{
+    var returnJsonObj = null;
+    var xhttp = new XMLHttpRequest();
+    var sendString = "";
+
+    if(whatPage != null)
+    {
+        sendString = "/" + whatPage.toLowerCase();
+
+        if(value != null)
+        {
+            sendString += "?" + value;
+        }
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                returnJsonObj = JSON.parse(this.responseText);
+                callBack(returnJsonObj.page,returnJsonObj);
+            }
+        };
+        xhttp.open("GET",sendString, true);
+        xhttp.send();
+    }
+}
+
+
+function catSetup(page,jsonObj)
+{
+    var disDiv;
+    var newUL = $("<ul class='ul-cat-dis'></ul>");
+
+    if(page == "restaurants")
+    {
+        if(jsonObj.message == null)
+        {
+            hideShowRemClass(restAdd,restList,'hidden');
+            disDiv = $('.rest-cats');
+            editAddTitle.text("Edit");
+        }
+    }
+
+    $.each(jsonObjs,function(index,value){
+        displayCheckbox(value).appendTo(disDiv);
+    });
+
+}
+
+
+function displayCheckbox(obj)
+{
+    newLI = $("<li></li>");
+    newCheck = $("<input type='checkbox' value='" + obj.id + "' class='catSelect'/>");
+    newSpan = $("<span class='span-cat-select'>" + obj.name + "</span>");
+
+    newCheck.appendTo(newLI);
+    newSpan.appendTo(newLI);
+    newLI.appendTo(newUL);
+
+    return newLI;
+
 }
 
 
@@ -289,11 +327,12 @@ $(document).ready(function(){
 
 
     $('.restaurants-display').on('click','.rest-edit-button',function(){
+        hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
         page = $(this).nextAll('.removeType').val();
-
-       // ajaxCall("categories","pageType=" + page);
+       ajaxCallItems("categories","pageType=" + page);
 
     });
+
 
     addItem.on('click',function(){
         page = $("#addType").val();

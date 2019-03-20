@@ -135,7 +135,7 @@ express()
             }
             else
             {
-                queryRes['catPage'] = myVar.pageType;
+                queryRes['page'] = myVar.pageType;
                 res.status(200).json(queryRes);
             }
 
