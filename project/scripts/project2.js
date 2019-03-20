@@ -250,7 +250,7 @@ function ajaxCallItems(whatPage,value,callBack)
             if (this.readyState == 4 && this.status == 200)
             {
                 returnJsonObj = JSON.parse(this.responseText);
-                callBack(returnJsonObj.page,returnJsonObj);
+                callBack(returnJsonObj.page,returnJsonObj.cats);
             }
         };
         xhttp.open("GET",sendString, true);
