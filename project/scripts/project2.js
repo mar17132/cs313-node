@@ -274,7 +274,7 @@ function catSetup(page,jsonObj)
         }
     }
 
-    $.each(jsonObjs,function(index,value){
+    $.each(jsonObj,function(index,value){
         displayCheckbox(value).appendTo(disDiv);
     });
 
