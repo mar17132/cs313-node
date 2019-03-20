@@ -129,6 +129,8 @@ express()
 
         queryDB(queryText,function(err,queryRes){
 
+            console.log(queryRes);
+
             if(err || queryRes == null)
             {
                 res.status(500).json({success:false,data:err});
