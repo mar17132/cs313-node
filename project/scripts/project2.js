@@ -356,7 +356,7 @@ $(document).ready(function(){
            $("#restName").val(jsonObj[0].name);
            var catArray = jsonObj[0].cat_id.split(",");
            $.each($('.catSelect'),function(index,value){
-               if($.inArray(value.val(),catArray)
+               if($.inArray(value.val(),catArray))
                 {
                     $(this).attr('checked',true);
                 }
