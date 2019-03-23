@@ -198,14 +198,14 @@ function queryDB(queryText,callbackfunction)
         }
         else
         {
-            console.log(results);
-            if(results.rows)
+
+            if(results.lenght > 0)
             {
-                callbackfunction(null,results.rows);
+                callbackfunction(null,{success:true});
             }
             else
             {
-                //callbackfunction(null,{se});
+                callbackfunction(null,results.rows);
             }
         }
 
