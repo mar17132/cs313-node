@@ -263,9 +263,9 @@ function ajaxCallItems(whatPage,value,callBack)
                 {
                     callBack(returnJsonObj.page,returnJsonObj.cats);
                 }
-                else if(returnJsonObj.rest)
+                else
                 {
-                    callBack(returnJsonObj.page,returnJsonObj.rest);
+                    callBack(null,returnJsonObj.rest);
                 }
             }
         };
