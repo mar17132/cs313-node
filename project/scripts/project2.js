@@ -323,6 +323,8 @@ $(document).ready(function(){
     $('.restaurants-display').on('click','#addRestBtn',function(){
         hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
         editAddTitle.text("Add");
+        page = $(this).nextAll('.removeType').val();
+        ajaxCallItems("categories","pageType=" + page, catSetup);
     });
 
     $('.restaurants-display').on('click','.rest-remove-button',function(){
@@ -336,8 +338,16 @@ $(document).ready(function(){
 
     $('.restaurants-display').on('click','.rest-edit-button',function(){
         hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
+        editAddTitle.text("Edit");
+        addItem.val('Update');
         page = $(this).nextAll('.removeType').val();
+        restId = $(this).nextAll('.rest-id').val();
        ajaxCallItems("categories","pageType=" + page, catSetup);
+       ajaxCallItems("resturants","pageType=" + page + "&restId=" + restId, function(request,respond){
+           $("#restID").val(respond.id);
+           $("#restName").val(respond.name);
+       });
+
 
     });
 
@@ -346,19 +356,41 @@ $(document).ready(function(){
         page = $("#addType").val();
         name = $("#restName").val();
         clearTextBox($("#restName"));
-        catString = ""
-        $('.catSelect:checked').each(function(index,value){
-            if(index == ($('.catSelect:checked').length - 1))
-            {
-                catString += $(this).val();
-            }
-            else
-            {
-                catString += $(this).val() + ",";
-            }
-        });
-        ajaxCall("add","name=" + name + "&addType=" + page + "&cats=" + catString);
+        catString = "";
+
+        if($(this).val() == "Add")
+        {
+
+            $('.catSelect:checked').each(function(index,value){
+                if(index == ($('.catSelect:checked').length - 1))
+                {
+                    catString += $(this).val();
+                }
+                else
+                {
+                    catString += $(this).val() + ",";
+                }
+            });
+            ajaxCall("add","name=" + name + "&addType=" + page + "&cats=" + catString);
+        }
+        else if($(this).val() == "Edit")
+        {
+            id = $("#restID").val();
+            $('.catSelect:checked').each(function(index,value){
+                if(index == ($('.catSelect:checked').length - 1))
+                {
+                    catString += $(this).val();
+                }
+                else
+                {
+                    catString += $(this).val() + ",";
+                }
+            });
+            ajaxCall("edit","id=" + id + "&name=" + name + "&addType=" + page + "&cats=" + catString);
+
+        }
     });
+
 
 });
 
