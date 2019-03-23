@@ -167,13 +167,13 @@ express()
     })
 
     .post('/login',function(req,res){
-        var returnVal = {sucess:false};
+        var returnVal = {success:false};
 
         if(req.body.username == "admin" && req.body.password == "password")
         {
             req.session.user = req.body.username;
 
-            returnVal = {sucess:true};
+            returnVal = {success:true};
         }
 
         res.json(returnVal);
@@ -181,13 +181,13 @@ express()
     })
 
     .post('/logout',function(req,res){
-        var returnVal = {sucess:false};
+        var returnVal = {success:false};
 
         if(req.session.user)
         {
             req.session.destroy();
 
-            returnVal = {sucess:true};
+            returnVal = {success:true};
         }
 
         res.json(returnVal);
@@ -202,7 +202,7 @@ express()
         }
         else
         {
-            var returnVal = {succes:false, message: "Access Denied"};
+            var returnVal = {success:false, message: "Access Denied"};
             res.status(401).json(returnVal);
         }
      },function(req,res){
