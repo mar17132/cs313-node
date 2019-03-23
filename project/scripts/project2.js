@@ -352,8 +352,8 @@ $(document).ready(function(){
         restId = $(this).nextAll('.rest-id').val();
        ajaxCallItems("categories","pageType=" + page, catSetup);
        ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId, function(page,jsonObj){
-           $("#restID").val(jsonObj.id);
-           $("#restName").val(jsonObj.name);
+           $("#restID").val(jsonObj[0].id);
+           $("#restName").val(jsonObj[0].name);
        });
 
 
