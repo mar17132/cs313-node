@@ -258,7 +258,15 @@ function ajaxCallItems(whatPage,value,callBack)
             if (this.readyState == 4 && this.status == 200)
             {
                 returnJsonObj = JSON.parse(this.responseText);
-                callBack(returnJsonObj.page,returnJsonObj.cats);
+
+                if(returnJsonObj.cats)
+                {
+                    callBack(returnJsonObj.page,returnJsonObj.cats);
+                }
+                else if(returnJsonObj.rest)
+                {
+                    callBack(returnJsonObj.page,returnJsonObj.rest);
+                }
             }
         };
         xhttp.open("GET",sendString, true);
@@ -343,9 +351,9 @@ $(document).ready(function(){
         page = $(this).nextAll('.removeType').val();
         restId = $(this).nextAll('.rest-id').val();
        ajaxCallItems("categories","pageType=" + page, catSetup);
-       ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId, function(request,respond){
-           $("#restID").val(respond.id);
-           $("#restName").val(respond.name);
+       ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId, function(page,jsonObj){
+           $("#restID").val(jsonObj.id);
+           $("#restName").val(jsonObj.name);
        });
 
 

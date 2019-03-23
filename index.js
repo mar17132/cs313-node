@@ -213,7 +213,7 @@ express()
             }
             else
             {
-                res.status(200).json({pageType:myVar.addType});
+                res.status(200).json({rest:queryRes,page:myVar.pageType});
             }
 
         });
