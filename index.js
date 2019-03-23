@@ -54,13 +54,15 @@ express()
 
         queryDB(queryText,function(err,queryRes){
 
+            console.log(queryRes);
+
             if(err || queryRes == null)
             {
                 res.status(500).json({success:false,data:err});
             }
             else
             {
-                if(queryRes.length < 1)
+                if(queryRes.length < 0)
                 {
                     res.status(200).json({message:"No Restaurants found"});
                 }
