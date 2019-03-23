@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const url = require('url')
+const session = require('express-session')
 const { Pool, Client } = require('pg')
 const connectionString = 'postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
 const PORT = process.env.PORT || 5000
@@ -10,6 +11,11 @@ express()
     .use(express.static(path.join(__dirname, 'html')))
     .use(express.static(path.join(__dirname, 'prove')))
     .use(express.static(path.join(__dirname, 'project')))
+    .use(session({
+        secret: 'bobeathiscoat',
+        resave: false,
+        saveUninitialized: true
+    }))
     .set('views', path.join(__dirname, 'views'))
     .set('views', path.join(__dirname, 'prove'))
     .set('views', path.join(__dirname, 'project'))
@@ -148,6 +154,60 @@ express()
 
 
     /*###########End Project 2###############*/
+
+    .get('/act12',function(req,res){
+        res.sendfile('html/act12/test.html');
+    })
+
+    .post('/login',function(req,res){
+        var returnVal = {sucess:false};
+
+        if(req.body.username == "admin" && req.body.password == "password")
+        {
+            req.session.user = req.body.username;
+
+            returnVal = {sucess:true};
+        }
+
+        res.json(returnVal);
+
+    })
+
+    .post('/logout',function(req,res){
+        var returnVal = {sucess:false};
+
+        if(req.session.user)
+        {
+            req.session.destory();
+
+            returnVal = {sucess:true};
+        }
+
+        res.json(returnVal);
+
+    })
+
+    .get('/getServerTime',function(req,res,next){
+
+        if(req.session.user)
+        {
+            next();
+        }
+        else
+        {
+            var returnVal = {succes:false, message: "Access Denied"};
+            res.status(401).json(returnVal);
+        }
+     },function(req,res){
+        var time = new Date();
+
+        var returnVal = {success: true, time: time};
+
+        res.json(returnVal);
+    })
+
+
+
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
