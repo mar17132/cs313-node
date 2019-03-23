@@ -348,7 +348,7 @@ $(document).ready(function(){
                 catString += $(this).val() + ",";
             }
         });
-        ajaxCall("add","name=" + name + "&addType=" + page "&cats=" + catString);
+        ajaxCall("add","name=" + name + "&addType=" + page + "&cats=" + catString);
     });
 
 });
