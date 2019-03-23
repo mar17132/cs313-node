@@ -199,7 +199,7 @@ function queryDB(queryText,callbackfunction)
         else
         {
 
-            if(results.isArray())
+            if(Array.isArray(results))
             {
                 callbackfunction(null,{success:true});
             }
