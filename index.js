@@ -179,6 +179,8 @@ express()
                     returnVal = {success:true};
                 }
             }
+
+            res.json(returnVal);
         });
 
         /*if(req.body.username == "admin" && req.body.password == "password")
@@ -186,9 +188,9 @@ express()
             req.session.user = req.body.username;
 
             returnVal = {success:true};
-        }*/
+        }
 
-        res.json(returnVal);
+        res.json(returnVal);*/
 
     })
 
