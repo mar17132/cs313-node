@@ -89,6 +89,7 @@ express()
                 if(myVar.cats && myVar.cats != "")
                 {
                     var catArray = myVar.cats.split(",");
+                    console.log(catArray);
                     $.each(catArray,function(index,value){
                         queryText += "INSERT INTO rest_to_cat(rest_id,cat_id)\
                         VALUES(\
