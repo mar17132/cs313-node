@@ -98,6 +98,7 @@ express()
                         (SELECT ID FROM category WHERE id = '" + catArray[j] + "')\
                         );"
                     }
+                    console.log(queryText);
 
                 }
             }
