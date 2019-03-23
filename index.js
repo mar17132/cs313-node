@@ -95,8 +95,7 @@ express()
                         queryText += "INSERT INTO rest_to_cat(rest_id,cat_id)\
                         VALUES(\
                         (SELECT ID FROM restaurants WHERE Name ='" + myVar.name + "'),\
-                        (SELECT ID FROM category WHERE id = '" + catArray[j] + "')\
-                        );";
+                        '" + catArray[j] + "');";
                     }
 
 
@@ -199,7 +198,15 @@ function queryDB(queryText,callbackfunction)
         }
         else
         {
-            callbackfunction(null,results.rows);
+            console.log(results);
+            if(results.rows)
+            {
+                callbackfunction(null,results.rows);
+            }
+            else
+            {
+                //callbackfunction(null,{se});
+            }
         }
 
         client.end();
