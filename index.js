@@ -96,9 +96,10 @@ express()
                         VALUES(\
                         (SELECT ID FROM restaurants WHERE Name ='" + myVar.name + "'),\
                         (SELECT ID FROM category WHERE id = '" + catArray[j] + "')\
-                        );"
+                        );";
+                        console.log(queryText);
                     }
-                    console.log(queryText);
+
 
                 }
             }
