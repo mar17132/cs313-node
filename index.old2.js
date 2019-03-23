@@ -162,6 +162,73 @@ express()
 
     /*###########End Project 2###############*/
 
+/*###########Team act 12###############*/
+ /*   .get('/act12',function(req,res){
+        res.sendfile('html/act12/test.html');
+    })
+
+    .post('/login',function(req,res){
+        var returnVal = {success:false};
+
+        queryText = "SELECT * FROM users WHERE name='" + req.body.username + "';";
+
+        queryDB(queryText,function(request,responds){
+            if(responds.length > 0)
+            {
+                if(responds[0].name == req.body.username && responds[0].pass == req.body.password)
+                {
+                    req.session.user = req.body.username;
+                    returnVal = {success:true};
+                }
+            }
+
+            res.json(returnVal);
+        });
+
+        //if(req.body.username == "admin" && req.body.password == "password")
+        //{
+          //  req.session.user = req.body.username;
+
+            //returnVal = {success:true};
+        //}
+
+        //res.json(returnVal);
+
+    })
+
+    .post('/logout',function(req,res){
+        var returnVal = {success:false};
+
+        if(req.session.user)
+        {
+            req.session.destroy();
+
+            returnVal = {success:true};
+        }
+
+        res.json(returnVal);
+
+    })
+
+    .get('/getServerTime',function(req,res,next){
+
+        if(req.session.user)
+        {
+            next();
+        }
+        else
+        {
+            var returnVal = {success:false, message: "Access Denied"};
+            res.status(401).json(returnVal);
+        }
+     },function(req,res){
+        var time = new Date();
+
+        var returnVal = {success: true, time: time};
+
+        res.json(returnVal);
+    })*/
+/*###########End Team act 12###############*/
 
 
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
