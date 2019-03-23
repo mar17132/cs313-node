@@ -112,7 +112,15 @@ function displayRestaurants(restaurantObj)
             nameContent.text(value.name);
 
             catContent = $("<div class='table-cell-content'>");
-            catContent.text(value.cat_name);
+            if(value.cat_name)
+            {
+               catContent.text(value.cat_name);
+            }
+            else
+            {
+                catContent.text(" ");
+            }
+
 
             optionContent = $("<div class='table-cell-content'>");
             removeButton = $("<input value='Remove' type='button' class='rest-remove-button restBtn'/>");
