@@ -356,10 +356,15 @@ $(document).ready(function(){
            $("#restName").val(jsonObj[0].name);
            var catArray = jsonObj[0].cat_id.split(",");
            $.each($('.catSelect'),function(){
-               if($.inArray($(this).val(),catArray))
-                {
-                    $(this).attr('checked',true);
-                }
+
+               for(k = 0; k < catArray.length; k++)
+               {
+                   if($(this).val() == catArray[k])
+                    {
+                       $(this).attr('checked',true);
+                    }
+               }
+
            });
        });
 
