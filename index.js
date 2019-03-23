@@ -185,7 +185,7 @@ express()
 
         if(req.session.user)
         {
-            req.session.destory();
+            req.session.destroy();
 
             returnVal = {sucess:true};
         }
