@@ -90,13 +90,14 @@ express()
                 {
                     var catArray = myVar.cats.split(",");
                     console.log(catArray);
-                    $.each(catArray,function(index,value){
+                    for(j = 0; j < catArray; j++)
+                    {
                         queryText += "INSERT INTO rest_to_cat(rest_id,cat_id)\
                         VALUES(\
                         (SELECT ID FROM restaurants WHERE Name ='" + myVar.name + "'),\
-                        (SELECT ID FROM category WHERE id = '" + value + "')\
+                        (SELECT ID FROM category WHERE id = '" + catArray[j] + "')\
                         );"
-                    });
+                    }
 
                 }
             }
