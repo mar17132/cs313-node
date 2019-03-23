@@ -270,6 +270,7 @@ function catSetup(page,jsonObj)
         {
             hideShowRemClass(restAdd,restList,'hidden');
             disDiv = $('.rest-cats');
+            disDiv.empty();
             editAddTitle.text("Edit");
         }
     }
