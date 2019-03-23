@@ -339,7 +339,7 @@ $(document).ready(function(){
         clearTextBox($("#restName"));
         catString = ""
         $('.catSelect:checked').each(function(index,value){
-            if(index == $('.catSelect:checked').length)
+            if(index == ($('.catSelect:checked').length - 1))
             {
                 catString += $(this).val();
             }
