@@ -169,12 +169,24 @@ express()
     .post('/login',function(req,res){
         var returnVal = {success:false};
 
-        if(req.body.username == "admin" && req.body.password == "password")
+        queryText = "SELECT * FROM users WHERE name='" + req.body.username + "';";
+
+        queryDB(queryText,function(request,responds){
+            if(responds.length > 0)
+            {
+                if(responds[0].name == req.body.username && responds[0].pass == req.body.password)
+                {
+                    returnVal = {success:true};
+                }
+            }
+        });
+
+        /*if(req.body.username == "admin" && req.body.password == "password")
         {
             req.session.user = req.body.username;
 
             returnVal = {success:true};
-        }
+        }*/
 
         res.json(returnVal);
 
