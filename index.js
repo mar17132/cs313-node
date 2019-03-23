@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const url = require('url')
 const session = require('express-session')
+//const bodyParser = require('body-parser')
 const { Pool, Client } = require('pg')
 const connectionString = 'postgres://wmogwwdzthguoj:f5a8a72f73a9f52bc2f92dd44c8bac1c482a7cb56f97519e1c9b09492f91f751@ec2-54-204-13-34.compute-1.amazonaws.com:5432/d865mrc436havr'
 const PORT = process.env.PORT || 5000
@@ -16,6 +17,9 @@ express()
         resave: false,
         saveUninitialized: true
     }))
+    .use(express.json())
+    .use(express.urlencoded({extended:true}))
+    .use(logRequest)
     .set('views', path.join(__dirname, 'views'))
     .set('views', path.join(__dirname, 'prove'))
     .set('views', path.join(__dirname, 'project'))
