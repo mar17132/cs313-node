@@ -338,8 +338,8 @@ $(document).ready(function(){
         name = $("#restName").val();
         clearTextBox($("#restName"));
         catString = ""
-        $('.catSelect input:checked').each(function(index,value){
-            if(index == $('.catSelect input:checked').length)
+        $('.catSelect:checked').each(function(index,value){
+            if(index == $('.catSelect:checked').length)
             {
                 catString += $(this).val();
             }
