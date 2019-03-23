@@ -19,7 +19,10 @@ express()
     }))
     .use(express.json())
     .use(express.urlencoded({extended:true}))
-    .use(logRequest)
+    .use(function(request, response, next) {
+	console.log("Received a request for: " + request.url);
+	next();
+    })
     .set('views', path.join(__dirname, 'views'))
     .set('views', path.join(__dirname, 'prove'))
     .set('views', path.join(__dirname, 'project'))
