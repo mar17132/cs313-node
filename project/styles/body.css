@@ -57,6 +57,15 @@ h4{
     margin: 0;
 }
 
+.rest-ul-form li{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+
+.span-cat-select{
+    padding-left: 25px;
+}
 
 .add-resturant{
     width: 500px;
