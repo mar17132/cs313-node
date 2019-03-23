@@ -176,6 +176,7 @@ express()
             {
                 if(responds[0].name == req.body.username && responds[0].pass == req.body.password)
                 {
+                    req.session.user = req.body.username;
                     returnVal = {success:true};
                 }
             }
