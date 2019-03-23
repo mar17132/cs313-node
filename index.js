@@ -184,9 +184,8 @@ express()
             if(myVar.addType == "restaurants")
             {
                 queryText += "restaurants SET name = '" + myVar.name + "'\
-                              WHERE id='" + myVar.restid + "';";
-                queryText += "DELETE FROM rest_to_cat WHERE rest_id='" + myVar.restid + "';";
-
+                              WHERE id='" + myVar.id + "';";
+                queryText += "DELETE FROM rest_to_cat WHERE rest_id='" + myVar.id + "';";
 
                 if(myVar.cats && myVar.cats != "")
                 {

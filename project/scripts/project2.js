@@ -343,7 +343,7 @@ $(document).ready(function(){
         page = $(this).nextAll('.removeType').val();
         restId = $(this).nextAll('.rest-id').val();
        ajaxCallItems("categories","pageType=" + page, catSetup);
-       ajaxCallItems("restaurants","pageType=" + page + "&restId=" + restId, function(request,respond){
+       ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId, function(request,respond){
            $("#restID").val(respond.id);
            $("#restName").val(respond.name);
        });
