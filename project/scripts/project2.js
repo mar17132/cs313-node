@@ -337,7 +337,18 @@ $(document).ready(function(){
         page = $("#addType").val();
         name = $("#restName").val();
         clearTextBox($("#restName"));
-        ajaxCall("add","name=" + name + "&addType=" + page);
+        catString = ""
+        $('.catSelect input:checked').each(function(index,value){
+            if(index == $('.catSelect input:checked').length)
+            {
+                catString += $(this).val();
+            }
+            else
+            {
+                catString += $(this).val() + ",";
+            }
+        });
+        ajaxCall("add","name=" + name + "&addType=" + page "&cats=" + catString);
     });
 
 });
