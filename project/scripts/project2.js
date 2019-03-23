@@ -354,6 +354,13 @@ $(document).ready(function(){
        ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId, function(page,jsonObj){
            $("#restID").val(jsonObj[0].id);
            $("#restName").val(jsonObj[0].name);
+           var catArray = jsonObj[0].cat_id.split(",");
+           $.each($('.catSelect'),function(index,value){
+               if($.inArray(value.val(),catArray)
+                {
+                    $(this).attr('checked',true);
+                }
+           });
        });
 
 
