@@ -336,7 +336,8 @@ $(document).ready(function(){
     $('.restaurants-display').on('click','#addRestBtn',function(){
         hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
         editAddTitle.text("Add");
-        page = $(this).parent().find('.removeType').val();
+        //page = $(this).parent().find('.removeType').val();
+        page = "restaurants";
         ajaxCallItems("categories","pageType=" + page, catSetup);
     });
 
