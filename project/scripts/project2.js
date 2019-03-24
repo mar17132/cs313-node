@@ -312,6 +312,11 @@ function displayCheckbox(obj)
 }
 
 
+function unCheck(elem)
+{
+    elem.attr('checked', false);
+}
+
 $(document).ready(function(){
     pagesObj.setCurrentPageObj(1);
     setDisplayPage(pagesObj.getCurrentPageObj().display);
@@ -409,6 +414,8 @@ $(document).ready(function(){
             ajaxCall("edit","id=" + id + "&name=" + name + "&addType=" + page + "&cats=" + catString);
 
         }
+
+        unCheck($('.catSelect'));
     });
 
 
