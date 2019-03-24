@@ -114,7 +114,7 @@ express()
             }
             else
             {
-                res.status(200).json({pageType:myVar.addType});
+                res.status(200).json({pageType:myVar.addType,page:myVar.addType});
             }
 
         });
@@ -168,7 +168,7 @@ express()
             else
             {
                 //queryRes['page'] = myVar.pageType;
-                res.status(200).json({cats:queryRes,page:myVar.pageType});
+                res.status(200).json({cats:queryRes,page:myVar.pageType,pageType:myVar.pageType});
             }
 
         });
