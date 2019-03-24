@@ -393,7 +393,7 @@ $(document).ready(function(){
             });
             ajaxCall("add","name=" + name + "&addType=" + page + "&cats=" + catString);
         }
-        else if($(this).val() == "Edit")
+        else if($(this).val() == "Update")
         {
             id = $("#restID").val();
             $('.catSelect:checked').each(function(index,value){
