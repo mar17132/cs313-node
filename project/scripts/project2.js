@@ -314,7 +314,7 @@ function displayCheckbox(obj)
 
 function unCheck(elem)
 {
-    elem.attr('checked', false);
+    elem.attr('checked',false);
 }
 
 $(document).ready(function(){
@@ -338,7 +338,6 @@ $(document).ready(function(){
         editAddTitle.text("Add");
         page = $(this).nextAll('.removeType').val();
         ajaxCallItems("categories","pageType=" + page, catSetup);
-        unCheck($('.catSelect'));
     });
 
     $('.restaurants-display').on('click','.rest-remove-button',function(){
