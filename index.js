@@ -215,7 +215,7 @@ express()
             }
             else
             {
-                res.status(200).json({success:true,pageType:myVar.pageType});
+                res.status(200).json({success:true,pageType:myVar.addType});
             }
 
         });
