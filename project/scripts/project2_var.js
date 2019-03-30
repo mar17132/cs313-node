@@ -9,6 +9,11 @@ var editAddTitle = $('#addEdit-name');
 var restList = $(".list-resturants");
 var restAdd = $(".add-resturant");
 
+//create vote
+var createVList = $(".disCreateVote");
+var createVAdd = $(".createVote-form");
+var createVEdit = $(".editVote-form");
+
 var pagesObj = {
     currentPageObj:null,
     pages:[
