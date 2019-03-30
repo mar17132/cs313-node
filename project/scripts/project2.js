@@ -21,7 +21,7 @@ function removeKeep(elem,keepNum)
 
 function hideShowRemClass(showElem,hideElm,remClass)
 {
-    if(Array.isArray(hideElem))
+    if(Array.isArray(hideElm))
     {
         for(i = 0; i < hideElm.length; i++)
         {
