@@ -357,4 +357,25 @@ JOIN restaurants
 ON restaurants.ID = vote.rest_id
 WHERE vote.vote_lunch_id = '';
 
+--Get all create Vote
+SELECT vl.ID AS vote_id, vl.lunchDate,
+vl.votingStart ,vl.votingEnd,
+STRING_AGG(r.id::CHARACTER VARYING, ',') AS rest_id,
+STRING_AGG(r.name, ',') AS rest_name
+FROM vote_lunch vl
+JOIN rest_to_vote_lunch reslunch
+ON reslunch.vote_lunch_id  = vl.ID
+JOIN restaurants r
+ON r.ID = reslunch.rest_id
+WHERE vl.id = '1'
+GROUP BY vl.ID;
+
+
+--Get Votes
+SELECT v.ID, v.userEmail, v.rest_id, v.vote_lunch_id,
+r.name
+FROM vote v
+JOIN restaurants r
+ON r.id = v.rest_id
+WHERE v.vote_lunch_id = '3';
 

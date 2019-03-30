@@ -1,6 +1,5 @@
 
 
-
 function setDisplayPage(pageName)
 {
     contentDisplay.hide();
@@ -130,7 +129,19 @@ $(document).ready(function(){
                                              .text().trim().toLowerCase());
         pagesObj.setCurrentPageObj(thisPage.number);
         setDisplayPage(thisPage.display);
-        ajaxCall(thisPage.name,null);
+
+        if(this.name == "restaurants")
+        {
+            ajaxCall(thisPage.name,null);
+        }
+        else if(this.name == "create vote")
+        {
+            ajaxCallItems("createvote","pageType=" + thisPage.name, disCreateVote);
+        }
+        else if(this.name == "")
+        {
+
+        }
 
         //config the menu click
        // menuButtons.removeClass('menu-selected');

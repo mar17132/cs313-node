@@ -1,23 +1,16 @@
 
-function getRestaurants()
+
+
+function disCreateVote(page,jsonObj)
 {
-    return ajaxCallItems("restaurants","pageType=" + thisPage.name, function(page,jsonObj){
-        return jsonObj;
-    });
-}
-
-
-function displayRestaurants(restaurantObj)
-{
-
-    if(restaurantObj.length > 1)
+    if(jsonObj.length > 1)
     {
         hideShowRemClass(restList,restAdd,'hidden');
 
-        restTable = $("#restTable");
-        removeKeep(restTable,2);
+        displayTable = $("#disCreateVote");
+        removeKeep(displayTable,2);
 
-        $.each(restaurantObj,function(index,value){
+        $.each(jsonObj,function(index,value){
             newRow = $("<ul class='table-row row'></ul>");
 
             nameCell = $("<li class='table-cell col' ></li>");
@@ -39,10 +32,10 @@ function displayRestaurants(restaurantObj)
 
 
             optionContent = $("<div class='table-cell-content'>");
-            removeButton = $("<input value='Remove' type='button' class='rest-remove-button restBtn'/>");
-            editButton = $("<input value='Edit' type='button' class='rest-edit-button restBtn'/>");
-            hiddenId = $("<input value='" + value.id + "' type='hidden' class='rest-id'/>");
-            removeType = $("<input value='restaurants' type='hidden' class='removeType'/>");
+            removeButton = $("<input value='Remove' type='button' class='createV-remove-button cVoteBtn'/>");
+            editButton = $("<input value='Edit' type='button' class='createV-edit-button cVoteBtn'/>");
+            hiddenId = $("<input value='" + value.id + "' type='hidden' class='cVote-id'/>");
+            removeType = $("<input value='create vote' type='hidden' class='removeType'/>");
             editButton.appendTo(optionContent);
             removeButton.appendTo(optionContent);
             hiddenId.appendTo(optionContent);
@@ -55,7 +48,7 @@ function displayRestaurants(restaurantObj)
             catCell.appendTo(newRow);
             optionCell.appendTo(newRow);
 
-            newRow.appendTo(restTable);
+            newRow.appendTo(displayTable);
 
         });
     }

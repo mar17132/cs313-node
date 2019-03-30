@@ -117,13 +117,232 @@
                 </div>
             </div>
             <div class="create-vote-display content-display">
+                <div class="disCreateVote hidden" >
+                    <h3>Created Votes</h3>
+                    <!--table with all votes-->
+                    <div id="disCreateVote" class="table-div rest-table">
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
+                                    <input id="addVoteBtn" type="button"
+                                           value="Add Resturant"/>
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
 
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
+
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Lunch Date
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Start Time
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    End Time
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Options
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="createVote-form hidden" >
+                    <h4>Create Vote</h4>
+                    <ul class="createVote-ul-form" >
+                        <li>
+                            <label>Lunch Date</label>
+                        </li>
+                        <li>
+                            <input type="text" id="createLunchDate" placeholder="YYY-DD-MM"/>
+                        </li>
+                        <li>
+                            <label>Start Vote Date</label>
+                        </li>
+                        <li>
+                            <input type="text" id="createStartVoteDate" placeholder="YYY-DD-MM"/>
+                        </li>
+                        <li>
+                            <label>End Vote Date</label>
+                        </li>
+                        <li>
+                            <input type="text" id="createEndVoteDate" placeholder="YYY-DD-MM"/>
+                        </li>
+                        <li>
+                            <h4>Restaurants</h4>
+                            <div class="rest-select" >
+
+                            </div>
+                        </li>
+                        <li>
+                            <input type="button" id="createVoteBtn" value="Create" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="editVote-form hidden" >
+                    <h4>Edit Vote</h4>
+                    <ul class="createVote-ul-form" >
+                        <li>
+                            <label>Lunch Date</label>
+                        </li>
+                        <li>
+                            <input type="text" id="editLunchDate" placeholder="YYY-DD-MM"/>
+                        </li>
+                        <li>
+                            <label>Start Vote Date</label>
+                        </li>
+                        <li>
+                            <input type="text" id="editStartVoteDate" placeholder="YYY-DD-MM"/>
+                        </li>
+                        <li>
+                            <label>End Vote Date</label>
+                        </li>
+                        <li>
+                            <input type="text" id="editEndVoteDate" placeholder="YYY-DD-MM"/>
+                        </li>
+                        <li>
+                            <h4>Restaurants</h4>
+                            <div class="rest-select" >
+
+                            </div>
+                        </li>
+                        <li>
+                            <input type="button" id="editVoteBtn" value="Update" />
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="vote-display content-display">
+                <div class="disVotes hidden" >
+                    <h3>Votes</h3>
+                    <!--table with all votes-->
+                    <div class="table-div rest-table">
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
+                                    <input id="addVoteBtn" type="button"
+                                           value="Add Resturant"/>
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
 
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-content">
+
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Lunch Date
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Start Time
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    End Time
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Options
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="vote-form hidden" >
+                    <h4>Create Vote</h4>
+                    <ul class="vote-ul-form" >
+                        <li>
+                            <label>Lunch Date</label>
+                        </li>
+                        <li id="disLunchDate" >
+                            <!--Display the lunch date -->
+                        </li>
+                        <li>
+                            <h4>Restaurants</h4>
+                            <div class="rest-select" >
+                                <!--
+                                Display all of the restaurants in the vote.
+                                with a radio button.
+                                -->
+                            </div>
+                        </li>
+                        <li>
+                            <input type="button" id="voteBtn" value="Vote" />
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="results-display content-display">
-
+                <div class="disResults hidden" >
+                    <h3>Result List</h3>
+                    <!--table with all Results-->
+                    <div class="table-div rest-table">
+                        <ul class="table-row row">
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Lunch Date
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    Start Time
+                                </div>
+                            </li>
+                            <li class="table-cell col" >
+                                <div class="table-cell-head-content">
+                                    End Time
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="results-form hidden" >
+                    <h4>Results</h4>
+                    <ul class="results-ul-form" >
+                        <li>
+                            <label>Lunch Date</label>
+                        </li>
+                        <li id="disLunchDate" >
+                            <!--Display the lunch date -->
+                        </li>
+                        <li>
+                            <h4>Restaurants</h4>
+                            <div class="rest-select" >
+                                <!--
+                                Display all of the restaurants in the vote.
+                                with a radio button.
+                                -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
