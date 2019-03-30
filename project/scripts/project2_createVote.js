@@ -30,7 +30,7 @@ function disCreateVote(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             removeButton = $("<input value='Remove' type='button' class='createV-remove-button cVoteBtn'/>");
             editButton = $("<input value='Edit' type='button' class='createV-edit-button cVoteBtn'/>");
-            hiddenId = $("<input value='" + value.id + "' type='hidden' class='cVote-id'/>");
+            hiddenId = $("<input value='" + value.vote_id + "' type='hidden' class='cVote-id'/>");
             removeType = $("<input value='create vote' type='hidden' class='removeType'/>");
             editButton.appendTo(optionContent);
             removeButton.appendTo(optionContent);
