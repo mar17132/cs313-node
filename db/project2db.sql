@@ -358,8 +358,16 @@ ON restaurants.ID = vote.rest_id
 WHERE vote.vote_lunch_id = '';
 
 --Get all create Vote
-SELECT vl.ID AS vote_id, vl.lunchDate,
-vl.votingStart ,vl.votingEnd,
+SELECT vl.ID AS vote_id,
+CONCAT(EXTRACT(YEAR FROM vl.lunchDate),'-',
+EXTRACT(MONTH FROM vl.lunchDate),'-',
+EXTRACT(DAY FROM vl.lunchDate)) AS lunchDate,
+CONCAT(EXTRACT(YEAR FROM vl.votingStart),'-',
+EXTRACT(MONTH FROM vl.votingStart),'-',
+EXTRACT(DAY FROM vl.votingStart)) AS votingStart,
+CONCAT(EXTRACT(YEAR FROM vl.votingEnd),'-',
+EXTRACT(MONTH FROM vl.votingEnd),'-',
+EXTRACT(DAY FROM vl.votingEnd)) AS votingEnd,
 STRING_AGG(r.id::CHARACTER VARYING, ',') AS rest_id,
 STRING_AGG(r.name, ',') AS rest_name
 FROM vote_lunch vl

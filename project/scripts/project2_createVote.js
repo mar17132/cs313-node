@@ -20,13 +20,13 @@ function disCreateVote(page,jsonObj)
             optionCell = $("<li class='table-cell col' ></li>");
 
             lunchContent = $("<div class='table-cell-content'>");
-            lunchContent.text(value.lunchdate);
+            lunchContent.text(returnDate(value.lunchdate));
 
             startContent = $("<div class='table-cell-content'>");
-            startContent.text(value.votingstart);
+            startContent.text(returnDate(value.votingstart));
 
             endContent = $("<div class='table-cell-content'>");
-            endContent.text(value.votingend);
+            endContent.text(returnDate(value.votingend));
 
             optionContent = $("<div class='table-cell-content'>");
             removeButton = $("<input value='Remove' type='button' class='createV-remove-button cVoteBtn'/>");

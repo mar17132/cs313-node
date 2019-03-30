@@ -7,6 +7,13 @@ function setDisplayPage(pageName)
 }
 
 
+function returnDate(dateStr)
+{
+    var returnVale = dateStr.split('T');
+    return returnVale[0];
+}
+
+
 function removeKeep(elem,keepNum)
 {
     childArray = elem.children();
