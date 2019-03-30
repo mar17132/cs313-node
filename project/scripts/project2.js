@@ -1,5 +1,28 @@
 
 
+function createCheckbox(chkID,chkvalue,chkclass,checked)
+{
+    var checkLI = $("<li></li>");
+    var newCheck = $("<input type='checkbox' class='check-select' value='"
+                    + chkID + "' />");
+    var newValue = $("<span class='check-select'>" + chkvalue + "</span>");
+
+    if(chkclass)
+    {
+        newCheck.addClass(chkclass);
+    }
+
+    if(checked)
+    {
+        newCheck.attr('checked',true);
+    }
+
+    newCheck.appendTo(checkLI);
+    newValue.appendTo(checkLI);
+
+    return checkLI;
+}
+
 function setDisplayPage(pageName)
 {
     contentDisplay.hide();

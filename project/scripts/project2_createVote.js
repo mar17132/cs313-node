@@ -58,3 +58,70 @@ function disCreateVote(page,jsonObj)
 }
 
 
+function editCreateVote(page,jsonObj)
+{
+    hideShowRemClass(createVEdit,[createVAdd,createVList],'hidden');
+
+    var lunchDate = $("#editLunchDate");
+    var startDate = $("#editStartVoteDate");
+    var endDate = $("#editEndVoteDate");
+    var lunchVoteID = $("#editVoteID");
+    var displayRest = $("#editVoteRest");
+    var resturants = getRestaurants();
+    var restIDArray;
+
+    if(jsonObj.length == 1)
+    {
+        $.each(jsonObj,function(index,value){
+            lunchDate.val(returnDate(value.lunchdate));
+            startDate.val(returnDate(value.votingstart));
+            endDate.val(returnDate(value.votingend));
+            lunchVoteID.val(value.vote_id);
+            restIDArray = value.rest_id.split(",");
+
+            if(value.rest_id != null)
+            {
+                if(resturants != null)
+                {
+                    displayRest.empty();
+                    var newParent = $("<ul class='check-select-ul'></ul>");
+                    $.each(resturants,function(resIndex,resValue){
+                        var isChecked = false;
+
+                        if(restIDArray.length > 0)
+                        {
+                            for(k = 0; k < restIDArray.length; k++)
+                            {
+                                if(resValue.id == restIDArray[k])
+                                {
+                                    isChecked = true;
+                                }
+                            }
+                        }
+
+                        createCheckbox(resValue.id,resValue.name,
+                                    'rest-edit',isChecked).appendTo(newParent);
+                    });
+                }
+            }
+
+        });
+    }
+
+}
+
+
+function AddCreateVote(page,jsonObj)
+{
+    hideShowRemClass(createVEdit,[createVAdd,createVList],'hidden');
+
+    var lunchDate = $("#createLunchDate");
+    var startDate = $("#createStartVoteDate");
+    var endDate = $("#createEndVoteDate");
+    var resturants = getRestaurants();
+
+
+
+}
+
+
