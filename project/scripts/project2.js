@@ -130,11 +130,11 @@ $(document).ready(function(){
         pagesObj.setCurrentPageObj(thisPage.number);
         setDisplayPage(thisPage.display);
 
-        if(this.name == "restaurants")
+        if(thisPage.name == "restaurants")
         {
             ajaxCall(thisPage.name,null);
         }
-        else if(this.name == "create vote")
+        else if(thisPage.name == "create vote")
         {
             ajaxCallItems("createvote","pageType=" + thisPage.name, disCreateVote);
         }
