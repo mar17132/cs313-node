@@ -21,8 +21,19 @@ function removeKeep(elem,keepNum)
 
 function hideShowRemClass(showElem,hideElm,remClass)
 {
-    showElem.removeClass(remClass);
-    hideElm.addClass(remClass);
+    if(Array.isArray(hideElem))
+    {
+        for(i = 0; i < hideElm.length; i++)
+        {
+            hideElm[i].addClass(remClass);
+        }
+        showElem.removeClass(remClass);
+    }
+    else
+    {
+        showElem.removeClass(remClass);
+        hideElm.addClass(remClass);
+    }
 }
 
 

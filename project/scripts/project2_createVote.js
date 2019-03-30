@@ -5,7 +5,7 @@ function disCreateVote(page,jsonObj)
 {
     if(jsonObj.length > 1)
     {
-        hideShowRemClass(restList,restAdd,'hidden');
+        hideShowRemClass(createVList,[createVAdd,createVEdit],'hidden');
 
         displayTable = $("#disCreateVote");
         removeKeep(displayTable,2);
