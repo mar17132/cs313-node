@@ -13,23 +13,19 @@ function disCreateVote(page,jsonObj)
         $.each(jsonObj,function(index,value){
             newRow = $("<ul class='table-row row'></ul>");
 
-            nameCell = $("<li class='table-cell col' ></li>");
-            catCell = $("<li class='table-cell col' ></li>");
+            lunchCell = $("<li class='table-cell col' ></li>");
+            startCell = $("<li class='table-cell col' ></li>");
+            endCell = $("<li class='table-cell col' ></li>");
             optionCell = $("<li class='table-cell col' ></li>");
 
-            nameContent = $("<div class='table-cell-content'>");
-            nameContent.text(value.name);
+            lunchContent = $("<div class='table-cell-content'>");
+            lunchContent.text(value.lunchDate);
 
-            catContent = $("<div class='table-cell-content'>");
-            if(value.cat_name)
-            {
-               catContent.text(value.cat_name);
-            }
-            else
-            {
-                catContent.text(" ");
-            }
+            startContent = $("<div class='table-cell-content'>");
+            startContent.text(value.votingStart);
 
+            endContent = $("<div class='table-cell-content'>");
+            endContent.text(value.votingEnd);
 
             optionContent = $("<div class='table-cell-content'>");
             removeButton = $("<input value='Remove' type='button' class='createV-remove-button cVoteBtn'/>");
@@ -41,11 +37,13 @@ function disCreateVote(page,jsonObj)
             hiddenId.appendTo(optionContent);
             removeType.appendTo(optionContent);
 
-            nameContent.appendTo(nameCell);
-            catContent.appendTo(catCell);
+            lunchContent.appendTo(lunchCell);
+            startContent.appendTo(startCell);
+            endContent.appendTo(endCell);
             optionContent.appendTo(optionCell);
-            nameCell.appendTo(newRow);
-            catCell.appendTo(newRow);
+            lunchCell.appendTo(newRow);
+            startCell.appendTo(newRow);
+            endCell.appendTo(newRow);
             optionCell.appendTo(newRow);
 
             newRow.appendTo(displayTable);
