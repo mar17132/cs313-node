@@ -11,6 +11,7 @@ function disCreateVote(page,jsonObj)
         removeKeep(displayTable,2);
 
         $.each(jsonObj,function(index,value){
+            console.log(value);
             newRow = $("<ul class='table-row row'></ul>");
 
             lunchCell = $("<li class='table-cell col' ></li>");
@@ -19,13 +20,13 @@ function disCreateVote(page,jsonObj)
             optionCell = $("<li class='table-cell col' ></li>");
 
             lunchContent = $("<div class='table-cell-content'>");
-            lunchContent.text(value.lunchDate);
+            lunchContent.text(value.lunchdate);
 
             startContent = $("<div class='table-cell-content'>");
-            startContent.text(value.votingStart);
+            startContent.text(value.votingstart);
 
             endContent = $("<div class='table-cell-content'>");
-            endContent.text(value.votingEnd);
+            endContent.text(value.votingend);
 
             optionContent = $("<div class='table-cell-content'>");
             removeButton = $("<input value='Remove' type='button' class='createV-remove-button cVoteBtn'/>");
