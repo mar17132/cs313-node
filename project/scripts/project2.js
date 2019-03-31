@@ -284,7 +284,7 @@ $(document).ready(function(){
             newParent.appendTo(displayRest);
 
         });
-        ajaxCallItems("createvote","pageType=" + page + "id=" + restId, editCreateVote);
+        ajaxCallItems("createvote","pageType=" + page + "&id=" + restId, editCreateVote);
     });
 
 
