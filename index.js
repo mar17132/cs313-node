@@ -293,11 +293,11 @@ express()
         if(myVar.id != null)
         {
             queryText += " WHERE vl.ID='" + myVar.id + "'\
-                           GROUP BY vl.ID;";
+                           GROUP BY vl.ID ORDER BY vl.lunchDate;";
         }
         else
         {
-            queryText += " GROUP BY vl.ID;";
+            queryText += " GROUP BY vl.ID ORDER BY vl.lunchDate;";
         }
 
         queryDB(queryText,function(err,queryRes){
@@ -392,11 +392,11 @@ express()
         if(myVar.id != null)
         {
             queryText += " WHERE restaurants.ID='" + myVar.id + "'\
-                           GROUP BY restaurants.ID;";
+                           GROUP BY restaurants.ID ORDER BY vl.lunchDate;";
         }
         else
         {
-            queryText += " GROUP BY restaurants.ID;";
+            queryText += " GROUP BY restaurants.ID ORDER BY vl.lunchDate;";
         }
 
         queryDB(queryText,function(err,queryRes){

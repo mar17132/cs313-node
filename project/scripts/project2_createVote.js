@@ -50,10 +50,7 @@ function disCreateVote(page,jsonObj)
 
         });
     }
-    else
-    {
-        hideShowRemClass(restAdd,restList,'hidden');
-    }
+
 }
 
 

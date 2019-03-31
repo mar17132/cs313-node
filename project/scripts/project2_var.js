@@ -14,6 +14,10 @@ var createVList = $(".disCreateVote");
 var createVAdd = $(".createVote-form");
 var createVEdit = $(".editVote-form");
 
+//vote
+var voteList = $("#disVote");
+var voteform = $("#voteForm");
+
 var pagesObj = {
     currentPageObj:null,
     pages:[

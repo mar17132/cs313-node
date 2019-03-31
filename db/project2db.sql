@@ -387,3 +387,16 @@ JOIN restaurants r
 ON r.id = v.rest_id
 WHERE v.vote_lunch_id = '3';
 
+
+SELECT vl.ID AS vote_id, vl.lunchDate,
+vl.votingStart ,vl.votingEnd,
+STRING_AGG(r.id::CHARACTER VARYING, ',') AS rest_id,
+STRING_AGG(r.name, ',') AS rest_name
+FROM vote_lunch vl
+JOIN rest_to_vote_lunch reslunch
+ON reslunch.vote_lunch_id  = vl.ID
+JOIN restaurants r
+ON r.ID = reslunch.rest_id
+GROUP BY vl.ID
+ORDER BY vl.lunchDate;
+

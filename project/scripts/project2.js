@@ -1,5 +1,13 @@
 
 
+function removeElemSpace(parentElem)
+{
+    parentElem.contents().filter(function(){
+        return this.nodeType == 3;
+    }).remove();
+}
+
+
 function createCheckbox(chkID,chkvalue,chkclass,checked)
 {
     var checkLI = $("<li></li>");
@@ -162,6 +170,7 @@ function ajaxCallItems(whatPage,value,callBack)
 
 
 $(document).ready(function(){
+    removeElemSpace('.menu-ul');
     pagesObj.setCurrentPageObj(1);
     setDisplayPage(pagesObj.getCurrentPageObj().display);
     menuButtons.on('click',function(){
