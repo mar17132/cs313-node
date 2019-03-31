@@ -130,6 +130,7 @@ express()
                                     + myVar.restId + "','"
                                     + myVar.vlunchId + "');";
             }
+
         }
 
 
@@ -349,7 +350,8 @@ express()
                 JOIN rest_to_vote_lunch reslunch\
                 ON reslunch.vote_lunch_id  = vl.ID\
                 JOIN restaurants r\
-                ON r.ID = reslunch.rest_id GROUP BY vl.ID;";
+                ON r.ID = reslunch.rest_id GROUP BY vl.ID\
+                ORDER BY vl.lunchDate;";
         }
 
         queryDB(queryText,function(err,queryRes){
@@ -380,23 +382,72 @@ express()
     .get('/vote',function(req,res){
 
         var myVar = url.parse(req.url,true).query;
-        var queryText = "SELECT restaurants.ID, restaurants.Name,\
-                    STRING_AGG(category.id::CHARACTER VARYING, ',') AS cat_id,\
-                        STRING_AGG(category.name, ',') AS cat_name\
-                        FROM category\
-                        JOIN rest_to_cat\
-                        ON rest_to_cat.cat_id = category.ID\
-                        JOIN restaurants\
-                        ON restaurants.ID = rest_to_cat.rest_id";
+        var queryText = "SELECT vl.ID AS vote_id, vl.lunchDate,\
+                        vl.votingStart ,vl.votingEnd,\
+                        STRING_AGG(r.id::CHARACTER VARYING, ',') AS rest_id,\
+                        STRING_AGG(r.name, ',') AS rest_name\
+                        FROM vote_lunch vl\
+                        JOIN rest_to_vote_lunch reslunch\
+                        ON reslunch.vote_lunch_id  = vl.ID\
+                        JOIN restaurants r\
+                        ON r.ID = reslunch.rest_id";
 
         if(myVar.id != null)
         {
-            queryText += " WHERE restaurants.ID='" + myVar.id + "'\
-                           GROUP BY restaurants.ID ORDER BY vl.lunchDate;";
+            queryText += " WHERE vl.ID='" + myVar.id + "'\
+                           GROUP BY vl.ID ORDER BY vl.lunchDate;";
         }
         else
         {
-            queryText += " GROUP BY restaurants.ID ORDER BY vl.lunchDate;";
+            queryText += " GROUP BY vl.ID ORDER BY vl.lunchDate;";
+        }
+
+        queryDB(queryText,function(err,queryRes){
+
+            console.log(queryRes);
+
+            if(err || queryRes == null)
+            {
+                res.status(500).json({success:false,data:err});
+            }
+            else
+            {
+                if(queryRes.length < 1)
+                {
+                    res.status(200).json({message:"No Restaurants found"});
+                }
+                else
+                {
+                    res.status(200).json(queryRes);
+                }
+            }
+
+        });
+
+
+    })
+
+    .get('/checkuser',function(req,res){
+
+        var myVar = url.parse(req.url,true).query;
+        var queryText = "SELECT vl.ID AS vote_id, vl.lunchDate,\
+                        vl.votingStart ,vl.votingEnd,\
+                        STRING_AGG(r.id::CHARACTER VARYING, ',') AS rest_id,\
+                        STRING_AGG(r.name, ',') AS rest_name\
+                        FROM vote_lunch vl\
+                        JOIN rest_to_vote_lunch reslunch\
+                        ON reslunch.vote_lunch_id  = vl.ID\
+                        JOIN restaurants r\
+                        ON r.ID = reslunch.rest_id";
+
+        if(myVar.id != null)
+        {
+            queryText += " WHERE vl.ID='" + myVar.id + "'\
+                           GROUP BY vl.ID ORDER BY vl.lunchDate;";
+        }
+        else
+        {
+            queryText += " GROUP BY vl.ID ORDER BY vl.lunchDate;";
         }
 
         queryDB(queryText,function(err,queryRes){

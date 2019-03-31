@@ -273,8 +273,14 @@
                             <!--Display the lunch date -->
                         </li>
                         <li>
+                            <label>Email</label>
+                        </li>
+                        <li>
+                            <input type="text" id="voteEmail" />
+                        </li>
+                        <li>
                             <h4>Restaurants</h4>
-                            <div class="rest-select" >
+                            <div class="rest-vote" >
                                 <!--
                                 Display all of the restaurants in the vote.
                                 with a radio button.
@@ -283,6 +289,7 @@
                         </li>
                         <li>
                             <input type="button" id="voteBtn" value="Vote" />
+                            <input type="hidden" id="vote_luchID" value="" />
                         </li>
                     </ul>
                 </div>
@@ -327,7 +334,7 @@
                         </li>
                         <li>
                             <h4>Restaurants</h4>
-                            <div class="rest-select" >
+                            <div class="results-rest-display" >
                                 <!--
                                 Display all of the restaurants in the vote.
                                 with a radio button.

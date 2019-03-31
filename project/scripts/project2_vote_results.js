@@ -64,6 +64,36 @@ function disVote(page,jsonObj)
 function displayVoteForm(page,jsonObj)
 {
     hideShowRemClass(voteform,voteList,'hidden');
+
+    restDiv = $(".rest-vote");
+    lunchDateLi = $("#disLunchDate");
+    lunchvoteID = $("#vote_luchID");
+    restDiv.empty();
+    myObj = jsonObj[0];
+    restIdArray = myObj.rest_id.split(",");
+    restNameArray = myObj.rest_name.split(",");
+
+    lunchDateLi.text(myObj.lunchdate);
+    lunchvoteID.val(myObj.vote_id);
+
+    for(k = 0; k < restIdArray.length; k++)
+    {
+        parentUL = $("<ul class='vote-table row'></ul>");
+        newRadio = $("<input type='radio' value='" + restIdArray[k] +
+                     "' name='voteRest' class='vote-radio' />");
+        radioCell = $("<li class='col'></li>");
+        nameCell = $("<li class='col'>" + restNameArray[k] + "</li>");
+
+        newRadio.appendTo(radioCell);
+        radioCell.appendTo(parentUL);
+        nameCell.appendTo(parentUL);
+
+        parentUL.appendTo(restDiv);
+
+    }
+
+
+
 }
 
 

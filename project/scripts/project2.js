@@ -191,11 +191,11 @@ $(document).ready(function(){
         }
         else if(thisPage.name == "vote")
         {
-            ajaxCallItems("createvote","pageType=" + thisPage.name, disVote);
+            ajaxCallItems("vote","pageType=" + thisPage.name, disVote);
         }
         else if(thisPage.name == "results")
         {
-            ajaxCallItems("createvote","pageType=" + thisPage.name,
+            ajaxCallItems("results","pageType=" + thisPage.name,
                           resultsList);
         }
 
@@ -424,6 +424,21 @@ $(document).ready(function(){
         unCheck($('.catSelect'));
     });
 
+
+    $('#voteBtn').on('click',function(){
+
+        voteChoice = $(".vote-radio:checked").val();
+        lunchvoteID = $("#vote_luchID").val();
+        userEmail = $("#voteEmail").val();
+        sendStr = "addtype=vote&email=" + userEmail + "&restId=" + voteChoice +
+                  "&vlunchId=" + lunchvoteID;
+
+        ajaxCallItems("add",sendStr,function(page,jsonObj){
+            ajaxCallItems("vote","pageType=" + "vote", disVote);
+
+        });
+
+    });
 
 });
 
