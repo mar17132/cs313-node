@@ -460,21 +460,15 @@ $(document).ready(function(){
         userEmail = $("#voteEmail").val();
         sendStr = "addtype=vote&email=" + userEmail + "&restId=" + voteChoice +
                   "&vlunchId=" + lunchvoteID;
-        checkStr = "addType=vote&email=" + userEmail + "&id=" +lunchvoteID;
+        checkStr = "email=" + userEmail + "&id=" +lunchvoteID;
 
         ajaxCallItems("checkuser",checkStr,function(page,jsonObj){
+            ajaxCallItems("vote","pageType=" + "vote", disVote);
 
-            if(!jsonObj.found)
-            {
-                ajaxCallItems("add",sendStr,function(page,jsonObj){
-                    ajaxCallItems("vote","pageType=" + "vote", disVote);
+        });
 
-                });
-            }
-            else
-            {
-                $(".error-user").text("You have already voted on this lunch.");
-            }
+        ajaxCallItems("add",sendStr,function(page,jsonObj){
+            ajaxCallItems("vote","pageType=" + "vote", disVote);
 
         });
 

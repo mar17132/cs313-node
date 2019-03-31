@@ -430,7 +430,7 @@ express()
     .get('/checkuser',function(req,res){
 
         var myVar = url.parse(req.url,true).query;
-        var queryText += " SELECT v.ID, v.userEmail, v.rest_id, v.vote_lunch_id,\
+        var queryText = " SELECT v.ID, v.userEmail, v.rest_id, v.vote_lunch_id,\
                     r.name\
                     FROM vote v\
                     JOIN restaurants r\
