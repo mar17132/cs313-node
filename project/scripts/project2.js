@@ -246,7 +246,8 @@ $(document).ready(function(){
             $.each(jsonObj,function(resIndex,resValue){
                 var isChecked = false;
 
-                createCheckbox(resValue.id,resValue.name).appendTo(newParent);
+                createCheckbox(resValue.id,resValue.name,
+                               "rest-vote-edit").appendTo(newParent);
             });
 
             newParent.appendTo(displayRest);
@@ -280,7 +281,7 @@ $(document).ready(function(){
         startDate = $("#editStartVoteDate");
         endDate = $("#editEndVoteDate");
         lunchVoteID = $("#editVoteID");
-        restSelected = $(".rest-edit:checked");
+        restSelected = $(".rest-vote-edit:checked");
         page = "create vote";
         resIdStr = "";
         valuesStr = "addType=" + page + "&id=" + lunchVoteID.val() +
@@ -289,7 +290,7 @@ $(document).ready(function(){
                     "&lunchDate=" + lunchDate.val();
 
         $.each(restSelected,function(index,value){
-                if(index == ($('.rest-edit:checked').length - 1))
+                if(index == ($('.rest-vote-edit:checked').length - 1))
                 {
                     resIdStr += $(this).val();
                 }
@@ -317,7 +318,7 @@ $(document).ready(function(){
         lunchDate = $("#createLunchDate");
         startDate = $("#createStartVoteDate");
         endDate = $("#createEndVoteDate");
-        restSelected = $(".rest-edit:checked");
+        restSelected = $(".rest-vote-edit:checked");
         page = "create vote";
         resIdStr = "";
         valuesStr = "addType=" + page + "&votingStart= " + startDate.val() +
@@ -325,7 +326,7 @@ $(document).ready(function(){
                     "&lunchDate=" + lunchDate.val();
 
         $.each(restSelected,function(index,value){
-                if(index == ($('.rest-edit:checked').length - 1))
+                if(index == ($('.rest-vote-edit:checked').length - 1))
                 {
                     resIdStr += $(this).val();
                 }
@@ -336,14 +337,13 @@ $(document).ready(function(){
         });
 
         ajaxCallItems("add",valuesStr + "&rest=" + resIdStr,function(page,jsonObj){
-            ajaxCallItems("createvote","pageType=" + page, editCreateVote);
+            ajaxCallItems("createvote","pageType=" + page, disCreateVote);
 
         });
 
         clearTextBox(lunchDate);
         clearTextBox(startDate);
         clearTextBox(endDate);
-        clearTextBox(lunchVoteID);
     });
 
 
