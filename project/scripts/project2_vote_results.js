@@ -9,6 +9,11 @@ function disVote(page,jsonObj)
         removeKeep(displayTable,1);
 
         $.each(jsonObj,function(index,value){
+
+            startDate = new Date(returnDate(value.votingstart));
+            endDate = new Date(returnDate(value.votingend));
+            currentDate = new Date();
+
             newRow = $("<ul class='table-row row'></ul>");
 
             lunchCell = $("<li class='table-cell col' ></li>");
