@@ -186,16 +186,22 @@ $(document).ready(function(){
         }
         else if(thisPage.name == "create vote")
         {
-            ajaxCallItems("createvote","pageType=" + thisPage.name, disCreateVote);
+            ajaxCallItems("createvote","pageType=" + thisPage.name,
+                          disCreateVote);
         }
-        else if(this.name == "")
+        else if(thisPage.name == "vote")
         {
-
+            ajaxCallItems("createvote","pageType=" + thisPage.name, disVote);
+        }
+        else if(thisPage.name == "results")
+        {
+            ajaxCallItems("createvote","pageType=" + thisPage.name,
+                          resultsList);
         }
 
         //config the menu click
-       // menuButtons.removeClass('menu-selected');
-       // $(this).addClass('menu-selected');
+        menuButtons.removeClass('menu-selected');
+        $(this).addClass('menu-selected');
     });
 
     $('.restaurants-display').on('click','#addRestBtn',function(){
@@ -222,7 +228,8 @@ $(document).ready(function(){
         page = $(this).nextAll('.removeType').val();
         restId = $(this).nextAll('.rest-id').val();
        ajaxCallItems("categories","pageType=" + page, catSetup);
-       ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId, function(page,jsonObj){
+       ajaxCallItems("restaurants","pageType=" + page + "&id=" + restId,
+                     function(page,jsonObj){
            $("#restID").val(jsonObj[0].id);
            $("#restName").val(jsonObj[0].name);
            var catArray = jsonObj[0].cat_id.split(",");
@@ -268,7 +275,8 @@ $(document).ready(function(){
         restId = $(this).nextAll('.cVote-id').val();
         page = $(this).nextAll('.removeType').val();
 
-        ajaxCallItems("remove","id=" + restId + "&removeType=" + page,function(page,jsonObj){
+        ajaxCallItems("remove","id=" + restId + "&removeType=" + page,
+                      function(page,jsonObj){
             ajaxCallItems("createvote","pageType=" + page, disCreateVote);
         });
 
@@ -293,7 +301,8 @@ $(document).ready(function(){
             newParent.appendTo(displayRest);
 
         });
-        ajaxCallItems("createvote","pageType=" + page + "&id=" + restId, editCreateVote);
+        ajaxCallItems("createvote","pageType=" + page + "&id=" + restId,
+                      editCreateVote);
     });
 
 
@@ -323,7 +332,8 @@ $(document).ready(function(){
                 }
         });
 
-        ajaxCallItems("edit",valuesStr + "&rest=" + resIdStr,function(page,jsonObj){
+        ajaxCallItems("edit",valuesStr + "&rest=" + resIdStr,
+                      function(page,jsonObj){
             ajaxCallItems("createvote","pageType=" + page, disCreateVote);
 
         });
@@ -359,7 +369,8 @@ $(document).ready(function(){
                 }
         });
 
-        ajaxCallItems("add",valuesStr + "&rest=" + resIdStr,function(page,jsonObj){
+        ajaxCallItems("add",valuesStr + "&rest=" + resIdStr,
+                      function(page,jsonObj){
             ajaxCallItems("createvote","pageType=" + page, disCreateVote);
 
         });
@@ -389,7 +400,8 @@ $(document).ready(function(){
                     catString += $(this).val() + ",";
                 }
             });
-            ajaxCall("add","name=" + name + "&addType=" + page + "&cats=" + catString);
+            ajaxCall("add","name=" + name + "&addType=" + page + "&cats="
+                     + catString);
         }
         else if($(this).val() == "Update")
         {
@@ -404,7 +416,8 @@ $(document).ready(function(){
                     catString += $(this).val() + ",";
                 }
             });
-            ajaxCall("edit","id=" + id + "&name=" + name + "&addType=" + page + "&cats=" + catString);
+            ajaxCall("edit","id=" + id + "&name=" + name + "&addType=" + page
+                     + "&cats=" + catString);
 
         }
 
