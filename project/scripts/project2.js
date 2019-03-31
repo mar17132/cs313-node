@@ -247,7 +247,7 @@ $(document).ready(function(){
                 var isChecked = false;
 
                 createCheckbox(resValue.id,resValue.name,
-                               "rest-vote-edit").appendTo(newParent);
+                               "rest-vote-add").appendTo(newParent);
             });
 
             newParent.appendTo(displayRest);
@@ -270,6 +270,20 @@ $(document).ready(function(){
         hideShowRemClass(createVEdit,[createVAdd,createVList],'hidden');
         page = $(this).nextAll('.removeType').val();
         restId = $(this).nextAll('.cVote-id').val();
+        ajaxCallItems("restaurants","pageType=" + page, function(page,jsonObj){
+            var displayRest = $("#createVoteRest");
+            displayRest.empty();
+            var newParent = $("<ul class='check-select-ul'></ul>");
+            $.each(jsonObj,function(resIndex,resValue){
+                var isChecked = false;
+
+                createCheckbox(resValue.id,resValue.name,
+                               "rest-vote-edit").appendTo(newParent);
+            });
+
+            newParent.appendTo(displayRest);
+
+        });
         ajaxCallItems("createvote","pageType=" + page + "id=" + restId, editCreateVote);
     });
 
@@ -318,7 +332,7 @@ $(document).ready(function(){
         lunchDate = $("#createLunchDate");
         startDate = $("#createStartVoteDate");
         endDate = $("#createEndVoteDate");
-        restSelected = $(".rest-vote-edit:checked");
+        restSelected = $(".rest-vote-add:checked");
         page = "create vote";
         resIdStr = "";
         valuesStr = "addType=" + page + "&votingStart= " + startDate.val() +
@@ -326,7 +340,7 @@ $(document).ready(function(){
                     "&lunchDate=" + lunchDate.val();
 
         $.each(restSelected,function(index,value){
-                if(index == ($('.rest-vote-edit:checked').length - 1))
+                if(index == ($('.rest-vote-add:checked').length - 1))
                 {
                     resIdStr += $(this).val();
                 }

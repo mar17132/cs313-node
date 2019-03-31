@@ -65,8 +65,7 @@ function editCreateVote(page,jsonObj)
     var startDate = $("#editStartVoteDate");
     var endDate = $("#editEndVoteDate");
     var lunchVoteID = $("#editVoteID");
-    var displayRest = $("#editVoteRest");
-    var resturants = getRestaurants();
+    var restCheckbox = $(".rest-vote-edit");
     var restIDArray;
 
     if(jsonObj.length == 1)
@@ -80,30 +79,15 @@ function editCreateVote(page,jsonObj)
 
             if(value.rest_id != null)
             {
-                if(resturants != null)
-                {
-                    displayRest.empty();
-                    var newParent = $("<ul class='check-select-ul'></ul>");
-                    $.each(resturants,function(resIndex,resValue){
-                        var isChecked = false;
-
-                        if(restIDArray.length > 0)
-                        {
-                            for(k = 0; k < restIDArray.length; k++)
-                            {
-                                if(resValue.id == restIDArray[k])
-                                {
-                                    isChecked = true;
-                                }
-                            }
-                        }
-
-                        createCheckbox(resValue.id,resValue.name,
-                                    'rest-edit',isChecked).appendTo(newParent);
-                    });
-
-                    newParent.appendTo(displayRest);
-                }
+              restCheckbox.each(function(){
+                  for(l = 0; l < restIDArray.length; l++)
+                  {
+                    if($(this).val() == restIDArray[l])
+                    {
+                        $(this).attr('checked',true);
+                    }
+                  }
+              });
             }
 
         });
