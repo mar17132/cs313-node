@@ -66,6 +66,11 @@ function resultsList(page,jsonObj)
         removeKeep(displayTable,1);
 
         $.each(jsonObj,function(index,value){
+
+            startDate = new Date(returnDate(value.votingstart));
+            endDate = new Date(returnDate(value.votingend));
+            currentDate = new Date();
+
             newRow = $("<ul class='table-row row'></ul>");
 
             lunchCell = $("<li class='table-cell col' ></li>");
@@ -84,6 +89,13 @@ function resultsList(page,jsonObj)
 
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='View' type='button' class='results-view-button resultsBtn'/>");
+
+            if(!(currentDate >= startDate && currentDate <= endDate))
+            {
+               viewButton.attr('disabled',true);
+            }
+
+
             hiddenId = $("<input value='" + value.vote_id + "' type='hidden' class='results-id'/>");
             removeType = $("<input value='results' type='hidden' class='removeType'/>");
             viewButton.appendTo(optionContent);
