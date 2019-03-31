@@ -130,7 +130,7 @@ express()
                                     + myVar.restId + "','"
                                     + myVar.vlunchId + "');";
             }
-
+            
         }
 
 
@@ -379,6 +379,42 @@ express()
 
     })
 
+    .get('/checkuser',function(req,res){
+
+        var myVar = url.parse(req.url,true).query;
+        var queryText += " SELECT v.ID, v.userEmail, v.rest_id, \
+                            v.vote_lunch_id,r.name\
+                            FROM vote v\
+                            JOIN restaurants r\
+                            ON r.id = v.rest_id\
+                            WHERE v.userEmail ='" + myVar.email + "'\
+                            AND v.vote_lunch_id='" + myVar.id + "';";
+
+        queryDB(queryText,function(err,queryRes){
+
+            console.log(queryRes);
+
+            if(err || queryRes == null)
+            {
+                res.status(500).json({success:false,data:err});
+            }
+            else
+            {
+                if(queryRes.length < 1)
+                {
+                    res.status(200).json({found:false,message:"No user found"});
+                }
+                else
+                {
+                    res.status(200).json({found:true,message:"User already exist"});
+                }
+            }
+
+        });
+
+
+    })
+
     .get('/vote',function(req,res){
 
         var myVar = url.parse(req.url,true).query;
@@ -414,48 +450,11 @@ express()
             {
                 if(queryRes.length < 1)
                 {
-                    res.status(200).json({message:"No Restaurants found"});
+                    res.status(200).json({message:"No vote found"});
                 }
                 else
                 {
                     res.status(200).json(queryRes);
-                }
-            }
-
-        });
-
-
-    })
-
-    .get('/checkuser',function(req,res){
-
-        var myVar = url.parse(req.url,true).query;
-        var queryText += " SELECT v.ID, v.userEmail, v.rest_id, v.vote_lunch_id,\
-                    r.name\
-                    FROM vote v\
-                    JOIN restaurants r\
-                    ON r.id = v.rest_id\
-                    WHERE v.vote_lunch_id ='" + myVar.id + "'\
-                    AND v.userEmail='" + myVar.email + "';";
-
-
-        queryDB(queryText,function(err,queryRes){
-
-            console.log(queryRes);
-
-            if(err || queryRes == null)
-            {
-                res.status(500).json({success:false,data:err});
-            }
-            else
-            {
-                if(queryRes.length < 1)
-                {
-                    res.status(200).json({found:false,message:"No found"});
-                }
-                else
-                {
-                    res.status(200).json({found:true,message:"user found"});
                 }
             }
 

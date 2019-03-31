@@ -381,34 +381,6 @@ $(document).ready(function(){
     });
 
 
-    //vote
-    $('.vote-display').on('click','.vote-view-button',function(){
-        hideShowRemClass(voteform,voteList,'hidden');
-
-        page = $(this).nextAll('.removeType').val();
-        id = $(this).nextAll('.vote-id').val();
-
-        ajaxCallItems("vote","pageType=" + page + "&id=" + id,
-                      displayVoteForm);
-
-    });
-
-
-    //results
-    $('.results-display').on('click','.results-view-button',function(){
-        hideShowRemClass(voteform,voteList,'hidden');
-
-        page = $(this).nextAll('.removeType').val();
-        id = $(this).nextAll('.results-id').val();
-
-        ajaxCallItems("results","pageType=" + page + "&id=" + id,
-                      resultsDisplay);
-
-
-    });
-
-
-
     addItem.on('click',function(){
         page = $("#addType").val();
         name = $("#restName").val();
@@ -451,27 +423,35 @@ $(document).ready(function(){
 
         unCheck($('.catSelect'));
     });
-
-
+    
+    
     $('#voteBtn').on('click',function(){
-
+        
         voteChoice = $(".vote-radio:checked").val();
         lunchvoteID = $("#vote_luchID").val();
         userEmail = $("#voteEmail").val();
         sendStr = "addtype=vote&email=" + userEmail + "&restId=" + voteChoice +
                   "&vlunchId=" + lunchvoteID;
-        checkStr = "email=" + userEmail + "&id=" +lunchvoteID;
-
+        checkStr = "email=" + userEmail + "&id=" + lunchVoteID;
+        
         ajaxCallItems("checkuser",checkStr,function(page,jsonObj){
-            ajaxCallItems("vote","pageType=" + "vote", disVote);
+            
+            if(!jsonObj.found)
+            {
+                ajaxCallItems("add",sendStr,function(page,jsonObj){
+                    ajaxCallItems("vote","pageType=" + "vote", disVote);
 
-        });
+                }); 
+            }
+            else
+            {
+                $(".error-user").text("You have already voted on this Lunch.");
+            }
 
-        ajaxCallItems("add",sendStr,function(page,jsonObj){
-            ajaxCallItems("vote","pageType=" + "vote", disVote);
-
-        });
-
+        }); 
+        
+        clearTextBox(userEmail);
+        $("#disLunchDate").text("");
     });
 
 });
