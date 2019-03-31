@@ -281,10 +281,10 @@ $(document).ready(function(){
         restSelected = $(".rest-edit:checked");
         page = "create vote";
         resIdStr = "";
-        valuesStr = "addType=" + page + "id=" + lunchVoteID.val() +
-                    "votingStart= " + startDate.val() +
-                    "votingEnd=" + endDate.val() +
-                    "lunchDate=" + lunchDate.val();
+        valuesStr = "addType=" + page + "&id=" + lunchVoteID.val() +
+                    "&votingStart= " + startDate.val() +
+                    "&votingEnd=" + endDate.val() +
+                    "&lunchDate=" + lunchDate.val();
 
         $.each(restSelected,function(index,value){
                 if(index == ($('.rest-edit:checked').length - 1))
@@ -297,7 +297,7 @@ $(document).ready(function(){
                 }
         });
 
-        ajaxCallItems("edit",valuesStr + "rest=" + resIdStr,disCreateVote);
+        ajaxCallItems("edit",valuesStr + "&rest=" + resIdStr,disCreateVote);
 
     });
 
@@ -310,9 +310,9 @@ $(document).ready(function(){
         restSelected = $(".rest-edit:checked");
         page = "create vote";
         resIdStr = "";
-        valuesStr = "addType=" + page + "votingStart= " + startDate.val() +
-                    "votingEnd=" + endDate.val() +
-                    "lunchDate=" + lunchDate.val();
+        valuesStr = "addType=" + page + "&votingStart= " + startDate.val() +
+                    "&votingEnd=" + endDate.val() +
+                    "&lunchDate=" + lunchDate.val();
 
         $.each(restSelected,function(index,value){
                 if(index == ($('.rest-edit:checked').length - 1))
@@ -325,7 +325,7 @@ $(document).ready(function(){
                 }
         });
 
-        ajaxCallItems("add",valuesStr + "rest=" + resIdStr,disCreateVote);
+        ajaxCallItems("add",valuesStr + "&rest=" + resIdStr,disCreateVote);
     });
 
 
