@@ -271,7 +271,7 @@ $(document).ready(function(){
         page = $(this).nextAll('.removeType').val();
         restId = $(this).nextAll('.cVote-id').val();
         ajaxCallItems("restaurants","pageType=" + page, function(page,jsonObj){
-            var displayRest = $("#createVoteRest");
+            var displayRest = $("#editVoteRest");
             displayRest.empty();
             var newParent = $("<ul class='check-select-ul'></ul>");
             $.each(jsonObj,function(resIndex,resValue){
