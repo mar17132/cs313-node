@@ -19,7 +19,7 @@ var voteList = $("#disVote");
 var voteform = $("#voteForm");
 
 //results
-var resultsList = $("#resultsList");
+var disResultsList = $("#resultsList");
 var resultsForm = $("#resultsForm");
 
 var pagesObj = {

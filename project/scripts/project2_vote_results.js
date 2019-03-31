@@ -60,7 +60,7 @@ function resultsList(page,jsonObj)
 {
     if(jsonObj.length > 1)
     {
-        hideShowRemClass(resultsList,resultsForm,'hidden');
+        hideShowRemClass(disResultsList,resultsForm,'hidden');
 
         displayTable = $("#resultsTable");
         removeKeep(displayTable,1);
@@ -109,7 +109,7 @@ function resultsList(page,jsonObj)
 
 function resultsDisplay(page,jsonObj)
 {
-    hideShowRemClass(resultsForm,resultsList,'hidden');
+    hideShowRemClass(resultsForm,disResultsList,'hidden');
 
 }
 
