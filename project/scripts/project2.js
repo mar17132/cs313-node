@@ -258,7 +258,9 @@ $(document).ready(function(){
         restId = $(this).nextAll('.cVote-id').val();
         page = $(this).nextAll('.removeType').val();
 
-        ajaxCallItems("remove","id=" + restId + "&removeType=" + page,disCreateVote);
+        ajaxCallItems("remove","id=" + restId + "&removeType=" + page,function(page,jsonObj){
+            ajaxCallItems("createvote","pageType=" + page, editCreateVote);
+        });
 
     });
 
@@ -297,7 +299,15 @@ $(document).ready(function(){
                 }
         });
 
-        ajaxCallItems("edit",valuesStr + "&rest=" + resIdStr,disCreateVote);
+        ajaxCallItems("edit",valuesStr + "&rest=" + resIdStr,function(page,jsonObj){
+            ajaxCallItems("createvote","pageType=" + page, editCreateVote);
+
+        });
+
+        clearTextBox(lunchDate);
+        clearTextBox(startDate);
+        clearTextBox(endDate);
+        clearTextBox(lunchVoteID);
 
     });
 
@@ -325,7 +335,15 @@ $(document).ready(function(){
                 }
         });
 
-        ajaxCallItems("add",valuesStr + "&rest=" + resIdStr,disCreateVote);
+        ajaxCallItems("add",valuesStr + "&rest=" + resIdStr,function(page,jsonObj){
+            ajaxCallItems("createvote","pageType=" + page, editCreateVote);
+
+        });
+
+        clearTextBox(lunchDate);
+        clearTextBox(startDate);
+        clearTextBox(endDate);
+        clearTextBox(lunchVoteID);
     });
 
 
