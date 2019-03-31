@@ -27,6 +27,12 @@ function disVote(page,jsonObj)
 
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='Vote' type='button' class='vote-view-button voteBtn'/>");
+
+            if(!(currentDate >= startDate && currentDate <= endDate))
+            {
+               viewButton.attr('disabled',true);
+            }
+
             hiddenId = $("<input value='" + value.vote_id + "' type='hidden' class='vote-id'/>");
             removeType = $("<input value='vote' type='hidden' class='removeType'/>");
             viewButton.appendTo(optionContent);
@@ -90,7 +96,7 @@ function resultsList(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='View' type='button' class='results-view-button resultsBtn'/>");
 
-            if(!(currentDate >= startDate && currentDate <= endDate))
+            if(!(currentDate >= startDate))
             {
                viewButton.attr('disabled',true);
             }
