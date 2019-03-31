@@ -73,7 +73,7 @@ function displayVoteForm(page,jsonObj)
     restIdArray = myObj.rest_id.split(",");
     restNameArray = myObj.rest_name.split(",");
 
-    lunchDateLi.text(myObj.lunchdate);
+    lunchDateLi.text(returnDate(myObj.lunchdate));
     lunchvoteID.val(myObj.vote_id);
 
     for(k = 0; k < restIdArray.length; k++)

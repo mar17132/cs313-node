@@ -458,7 +458,7 @@ $(document).ready(function(){
         voteChoice = $(".vote-radio:checked").val();
         lunchvoteID = $("#vote_luchID").val();
         userEmail = $("#voteEmail").val();
-        sendStr = "addtype=vote&email=" + userEmail + "&restId=" + voteChoice +
+        sendStr = "addType=vote&email=" + userEmail + "&restId=" + voteChoice +
                   "&vlunchId=" + lunchvoteID;
         checkStr = "addType=vote&email=" + userEmail + "&id=" +lunchvoteID;
 
