@@ -240,7 +240,7 @@ $(document).ready(function(){
         hideShowRemClass(createVAdd,[createVList,createVEdit],'hidden');
         page = "create vote";
         ajaxCallItems("restaurants","pageType=" + page, function(page,jsonObj){
-            var displayRest = $("#createVoteBtn");
+            var displayRest = $("#createVoteRest");
             displayRest.empty();
             var newParent = $("<ul class='check-select-ul'></ul>");
             $.each(jsonObj,function(resIndex,resValue){
