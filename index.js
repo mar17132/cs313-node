@@ -241,7 +241,7 @@ express()
             {
                 queryText += "vote_lunch SET lunchDate = '" + myVar.lunchDate + "',\
                                votingStart = '" + myVar.votingStart + "',\
-                                votingEnd = '" + myVar.votingEnd + "',\
+                                votingEnd = '" + myVar.votingEnd + "'\
                               WHERE id='" + myVar.id + "';";
                 queryText += "DELETE FROM rest_to_vote_lunch WHERE vote_lunch_id ='" + myVar.id + "';";
 
