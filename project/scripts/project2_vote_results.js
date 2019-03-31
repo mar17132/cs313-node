@@ -3,7 +3,7 @@ function disVote(page,jsonObj)
 {
     if(jsonObj.length > 1)
     {
-        hideShowRemClass(createVList,[createVAdd,createVEdit],'hidden');
+        hideShowRemClass(voteList,voteform,'hidden');
 
         displayTable = $("#disVote");
         removeKeep(displayTable,2);
@@ -54,7 +54,7 @@ function resultsList(page,jsonObj)
 {
     if(jsonObj.length > 1)
     {
-        hideShowRemClass(createVList,[createVAdd,createVEdit],'hidden');
+        hideShowRemClass(resultsList,resultsForm,'hidden');
 
         displayTable = $("#resultsList");
         removeKeep(displayTable,2);
@@ -103,6 +103,7 @@ function resultsList(page,jsonObj)
 
 function resultsDisplay(page,jsonObj)
 {
+    hideShowRemClass(resultsForm,resultsList,'hidden');
 
 }
 

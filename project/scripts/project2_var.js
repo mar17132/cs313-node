@@ -18,6 +18,10 @@ var createVEdit = $(".editVote-form");
 var voteList = $("#disVote");
 var voteform = $("#voteForm");
 
+//results
+var resultsList = $("#resultsList");
+var resultsForm = $("#resultsForm");
+
 var pagesObj = {
     currentPageObj:null,
     pages:[
