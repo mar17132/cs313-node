@@ -260,7 +260,7 @@ $(document).ready(function(){
         page = $(this).nextAll('.removeType').val();
 
         ajaxCallItems("remove","id=" + restId + "&removeType=" + page,function(page,jsonObj){
-            ajaxCallItems("createvote","pageType=" + page, editCreateVote);
+            ajaxCallItems("createvote","pageType=" + page, disCreateVote);
         });
 
     });
