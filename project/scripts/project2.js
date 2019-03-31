@@ -314,9 +314,9 @@ $(document).ready(function(){
     $('.create-vote-display').on('click','#createVoteBtn',function(){
         hideShowRemClass(createVList,[createVAdd,createVEdit],'hidden');
 
-        lunchDate = $("#editLunchDate");
-        startDate = $("#editStartVoteDate");
-        endDate = $("#editEndVoteDate");
+        lunchDate = $("#createLunchDate");
+        startDate = $("#createStartVoteDate");
+        endDate = $("#createEndVoteDate");
         restSelected = $(".rest-edit:checked");
         page = "create vote";
         resIdStr = "";
