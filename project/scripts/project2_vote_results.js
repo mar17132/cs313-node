@@ -5,8 +5,8 @@ function disVote(page,jsonObj)
     {
         hideShowRemClass(voteList,voteform,'hidden');
 
-        displayTable = $("#disVote");
-        removeKeep(displayTable,2);
+        displayTable = $("#voteTable");
+        removeKeep(displayTable,1);
 
         $.each(jsonObj,function(index,value){
             newRow = $("<ul class='table-row row'></ul>");
@@ -62,8 +62,8 @@ function resultsList(page,jsonObj)
     {
         hideShowRemClass(resultsList,resultsForm,'hidden');
 
-        displayTable = $("#resultsList");
-        removeKeep(displayTable,2);
+        displayTable = $("#resultsTable");
+        removeKeep(displayTable,1);
 
         $.each(jsonObj,function(index,value){
             newRow = $("<ul class='table-row row'></ul>");
