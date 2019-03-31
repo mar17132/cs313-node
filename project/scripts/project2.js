@@ -243,7 +243,7 @@ $(document).ready(function(){
             var displayRest = $("#editVoteRest");
             displayRest.empty();
             var newParent = $("<ul class='check-select-ul'></ul>");
-            $.each(resturants,function(resIndex,resValue){
+            $.each(jsonObj,function(resIndex,resValue){
                 var isChecked = false;
 
                 createCheckbox(resValue.id,resValue.name).appendTo(newParent);

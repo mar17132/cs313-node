@@ -11,7 +11,6 @@ function disCreateVote(page,jsonObj)
         removeKeep(displayTable,2);
 
         $.each(jsonObj,function(index,value){
-            console.log(value);
             newRow = $("<ul class='table-row row'></ul>");
 
             lunchCell = $("<li class='table-cell col' ></li>");
