@@ -50,6 +50,12 @@ function disVote(page,jsonObj)
 }
 
 
+function displayVoteForm(page,jsonObj)
+{
+    hideShowRemClass(voteform,voteList,'hidden');
+}
+
+
 function resultsList(page,jsonObj)
 {
     if(jsonObj.length > 1)
