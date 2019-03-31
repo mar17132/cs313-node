@@ -234,6 +234,101 @@ $(document).ready(function(){
     });
 
 
+    //create vote buttons
+
+     $('.create-vote-display').on('click','#addVoteBtn',function(){
+        hideShowRemClass(createVAdd,[createVList,createVEdit],'hidden');
+        page = "create vote";
+        ajaxCallItems("restaurants","pageType=" + page, function(page,jsonObj){
+            var displayRest = $("#editVoteRest");
+            displayRest.empty();
+            var newParent = $("<ul class='check-select-ul'></ul>");
+            $.each(resturants,function(resIndex,resValue){
+                var isChecked = false;
+
+                createCheckbox(resValue.id,resValue.name).appendTo(newParent);
+            });
+
+            newParent.appendTo(displayRest);
+
+        });
+    });
+
+    $('.create-vote-display').on('click','.createV-remove-button',function(){
+        restId = $(this).nextAll('.cVote-id').val();
+        page = $(this).nextAll('.removeType').val();
+
+        ajaxCallItems("remove","id=" + restId + "&removeType=" + page,disCreateVote);
+
+    });
+
+
+    $('.create-vote-display').on('click','.createV-edit-button',function(){
+        hideShowRemClass(createVEdit,[createVAdd,createVList],'hidden');
+        page = $(this).nextAll('.removeType').val();
+        restId = $(this).nextAll('.cVote-id').val();
+        ajaxCallItems("createvote","pageType=" + page + "id=" + restId, editCreateVote);
+    });
+
+
+    $('.create-vote-display').on('click','#editVoteBtn',function(){
+        hideShowRemClass(createVList,[createVAdd,createVEdit],'hidden');
+
+        lunchDate = $("#editLunchDate");
+        startDate = $("#editStartVoteDate");
+        endDate = $("#editEndVoteDate");
+        lunchVoteID = $("#editVoteID");
+        restSelected = $(".rest-edit:checked");
+        page = "create vote";
+        resIdStr = "";
+        valuesStr = "addType=" + page + "id=" + lunchVoteID.val() +
+                    "votingStart= " + startDate.val() +
+                    "votingEnd=" + endDate.val() +
+                    "lunchDate=" + lunchDate.val();
+
+        $.each(restSelected,function(index,value){
+                if(index == ($('.rest-edit:checked').length - 1))
+                {
+                    resIdStr += $(this).val();
+                }
+                else
+                {
+                    resIdStr += $(this).val() + ",";
+                }
+        });
+
+        ajaxCallItems("edit",valuesStr + "rest=" + resIdStr,disCreateVote);
+
+    });
+
+    $('.create-vote-display').on('click','#createVoteBtn',function(){
+        hideShowRemClass(createVList,[createVAdd,createVEdit],'hidden');
+
+        lunchDate = $("#editLunchDate");
+        startDate = $("#editStartVoteDate");
+        endDate = $("#editEndVoteDate");
+        restSelected = $(".rest-edit:checked");
+        page = "create vote";
+        resIdStr = "";
+        valuesStr = "addType=" + page + "votingStart= " + startDate.val() +
+                    "votingEnd=" + endDate.val() +
+                    "lunchDate=" + lunchDate.val();
+
+        $.each(restSelected,function(index,value){
+                if(index == ($('.rest-edit:checked').length - 1))
+                {
+                    resIdStr += $(this).val();
+                }
+                else
+                {
+                    resIdStr += $(this).val() + ",";
+                }
+        });
+
+        ajaxCallItems("add",valuesStr + "rest=" + resIdStr,disCreateVote);
+    });
+
+
     addItem.on('click',function(){
         page = $("#addType").val();
         name = $("#restName").val();

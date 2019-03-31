@@ -102,6 +102,8 @@ function editCreateVote(page,jsonObj)
                         createCheckbox(resValue.id,resValue.name,
                                     'rest-edit',isChecked).appendTo(newParent);
                     });
+
+                    newParent.appendTo(displayRest);
                 }
             }
 
@@ -111,17 +113,7 @@ function editCreateVote(page,jsonObj)
 }
 
 
-function AddCreateVote(page,jsonObj)
-{
-    hideShowRemClass(createVEdit,[createVAdd,createVList],'hidden');
-
-    var lunchDate = $("#createLunchDate");
-    var startDate = $("#createStartVoteDate");
-    var endDate = $("#createEndVoteDate");
-    var resturants = getRestaurants();
 
 
-
-}
 
 
