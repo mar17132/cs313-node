@@ -170,7 +170,7 @@ function ajaxCallItems(whatPage,value,callBack)
 
 
 $(document).ready(function(){
-    removeElemSpace('.menu-ul');
+    removeElemSpace($('.menu-ul'));
     pagesObj.setCurrentPageObj(1);
     setDisplayPage(pagesObj.getCurrentPageObj().display);
     menuButtons.on('click',function(){
