@@ -315,7 +315,7 @@ $(document).ready(function(){
         });
 
         ajaxCallItems("edit",valuesStr + "&rest=" + resIdStr,function(page,jsonObj){
-            ajaxCallItems("createvote","pageType=" + page, editCreateVote);
+            ajaxCallItems("createvote","pageType=" + page, disCreateVote);
 
         });
 
