@@ -115,7 +115,7 @@ express()
                     console.log(restArray);
                     for(j = 0; j < restArray.length; j++)
                     {
-                        queryText += "INSERT INTO rest_to_vote_lunch(rest_id,vote_lunch_id)\
+                        queryText += "INSERT INTO rest_to_vote_lunch(vote_lunch_id,rest_id)\
                         VALUES(\
                         (SELECT ID FROM vote_lunch WHERE lunchDate ='" + myVar.lunchDate + "'),\
                         '" + restArray[j] + "');";
@@ -251,7 +251,7 @@ express()
                     console.log(restArray);
                     for(j = 0; j < restArray.length; j++)
                     {
-                        queryText += "INSERT INTO rest_to_vote_lunch(rest_id,vote_lunch_id)\
+                        queryText += "INSERT INTO rest_to_vote_lunch(vote_lunch_id,rest_id)\
                         VALUES(\
                         (SELECT ID FROM vote_lunch WHERE lunchDate ='" + myVar.lunchDate + "'),\
                         '" + restArray[j] + "');";
