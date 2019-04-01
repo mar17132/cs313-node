@@ -178,7 +178,8 @@ function resultsDisplay(page,jsonObj)
         newRow = $("<ul class='row results-row-ul' ></ul>");
         nameCell = $("<li class='col results-name-cell'>" + result.getName() +
                      "</li>");
-        resultPrecentage = (result.getVoteCount() / resultsObj.getNumVotes()) * 100;
+        resultPrecentage = ((result.getVoteCount() / resultsObj.getNumVotes())
+                            * 100).toFixed(2);
         resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
                      "%</li>");
 
