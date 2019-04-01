@@ -4,28 +4,28 @@ var contentDisplay = $('.content-display');
 var pageTitle = $('.title'); //update the title on the page not tab
 var addItem = $('.addButton');
 var editAddTitle = $('#addEdit-name');
-var voteObj = {
-    id:null,
-    name:null,
-    voteCount:0,
-    setId:function(newid){
+var voteObj = function(){
+    this.id = null;
+    this.name = null;
+    this.voteCount = 0;
+    this.setId = function(newid){
         this.id = newid;
-    },
-    setName:function(newName){
+    };
+    this.setName = function(newName){
         this.name = newName;
-    },
-    addVote:function(){
+    };
+    this.addVote = function(){
         this.voteCount++;
-    },
-    getId:function(){
+    };
+    this.getId = function(){
         return this.id;
-    },
-    getName:function(){
+    };
+    this.getName = function(){
         return this.name;
-    },
-    getVoteCount:function(){
+    };
+    this.getVoteCount = function(){
         return this.voteCount;
-    }
+    };
 };
 var resultsObj = {
     voteArray:[],
