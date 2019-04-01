@@ -164,6 +164,25 @@ function resultsDisplay(page,jsonObj)
 {
     hideShowRemClass(resultsForm,disResultsList,'hidden');
 
+    resultsDisplayDiv = $(".results-rest-display");
+
+    resultsObj.calVotes(jsonObj);
+
+    for(n = 0; n < resultsObj.getNumQuestion(); n++)
+    {
+        result = resultsObj.getVotObj(n);
+        newRow = $("<ul class='row results-row-ul' ></ul>");
+        nameCell = $("<li class='col results-name-cell'>" + result.getName() +
+                     "</li>");
+        resultPrecentage = result.getVoteCount() / resultsObj.getNumVotes();
+        resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
+                     "%</li>");
+
+        nameCell.appendTo(newRow);
+        resultCell.appendTo(newRow);
+        newRow.appendTo(resultsDisplayDiv);
+    }
+
 
 }
 

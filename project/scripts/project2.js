@@ -404,6 +404,8 @@ $(document).ready(function(){
         ajaxCallItems("vote","pageType=" + page + "&id=" + id,function(page,jsonArray){
             resultsObj.createVoteArray(jsonArray[0].rest_id.split(","),
                                       jsonArray[0].rest_name.split(","));
+                lunchDateDisplay = $("#resultsLunchDate");
+                lunchDateDisplay.text(jsonArray[0].lunchDate);
              ajaxCallItems("results","pageType=" + page + "&id=" + id,
                           resultsDisplay);
         });

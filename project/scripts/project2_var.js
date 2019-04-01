@@ -30,8 +30,15 @@ var voteObj = {
 var resultsObj = {
     voteArray:[],
     winnerID:null,
+    numVotes:0,
     setWinnerId:function(id){
         this.winnerID = id;
+    },
+    setNumVotes:function(vote){
+        this.numVotes = vote;
+    },
+    getNumVotes:function(){
+        return this.numVotes;
     },
     getWinnerId:function(){
 
@@ -64,12 +71,18 @@ var resultsObj = {
         }
     },
     calVotes:function(objArray){
-
-        for(m = 0; m < objArray.length; m++)
+        this.setNumVotes(objArray.length);
+        for(m = 0; m < this.numVotes; m++)
         {
             restVote = this.getVote(objArray[m].vote_lunch_id);
             restVote.addVote();
         }
+    },
+    getNumQuestion:function(){
+        return this.voteArray.length;
+    },
+    getVotObj:function(arrayIndex){
+        return this.voteArray[arrayIndex];
     }
 };
 
