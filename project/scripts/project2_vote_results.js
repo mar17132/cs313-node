@@ -187,6 +187,8 @@ function resultsDisplay(page,jsonObj)
         newRow.appendTo(resultsDisplayDiv);
     }
 
+    resultsObj.clearVoteArray();
+
 
 }
 

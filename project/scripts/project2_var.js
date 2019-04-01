@@ -83,6 +83,10 @@ var resultsObj = {
     },
     getVotObj:function(arrayIndex){
         return this.voteArray[arrayIndex];
+    },
+    clearVoteArray:function(){
+        this.voteArray = [];
+        this.numVotes = 0;
     }
 };
 
