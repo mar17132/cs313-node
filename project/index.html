@@ -265,21 +265,25 @@
                 </div>
                 <div id="voteForm" class="vote-form hidden" >
                     <h4>Vote</h4>
-                    <ul class="vote-ul-form" >
-                        <li>
+                    <ul class="vote-ul-form row" >
+                        <li class="vote-ul-form col" >
                             <label>Lunch Date</label>
                         </li>
-                        <li id="disLunchDate" >
+                        <li id="disLunchDate"  class="vote-ul-form col" >
                             <!--Display the lunch date -->
                         </li>
+                    </ul>
+                    <ul class="vote-ul-form row"  class="vote-ul-form col" >
                         <li>
                             <label>Email</label>
                         </li>
-                        <li>
+                        <li class="vote-ul-form col" >
                             <input type="text" id="voteEmail" />
                             <span class="error-user"></span>
                         </li>
-                        <li>
+                    </ul>
+                    <ul class="vote-ul-form row" >
+                        <li class="vote-ul-form col" >
                             <h4>Restaurants</h4>
                             <div class="rest-vote" >
                                 <!--
@@ -288,7 +292,9 @@
                                 -->
                             </div>
                         </li>
-                        <li>
+                    </ul>
+                    <ul class="vote-ul-form row" >
+                        <li class="vote-ul-form col" >
                             <input type="button" id="voteBtn" value="Vote" />
                             <input type="hidden" id="vote_luchID" value="" />
                         </li>
