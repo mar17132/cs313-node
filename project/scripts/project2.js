@@ -405,7 +405,7 @@ $(document).ready(function(){
             resultsObj.createVoteArray(jsonArray[0].rest_id.split(","),
                                       jsonArray[0].rest_name.split(","));
                 lunchDateDisplay = $("#resultsLunchDate");
-                lunchDateDisplay.text(jsonArray[0].lunchDate);
+                lunchDateDisplay.text(returnDate(jsonArray[0].lunchdate));
              ajaxCallItems("results","pageType=" + page + "&id=" + id,
                           resultsDisplay);
         });

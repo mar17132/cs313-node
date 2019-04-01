@@ -164,9 +164,11 @@ function resultsDisplay(page,jsonObj)
 {
     hideShowRemClass(resultsForm,disResultsList,'hidden');
 
+    displayNumVotes = $("#resultsTotalVotes");
     resultsDisplayDiv = $(".results-rest-display");
 
     resultsObj.calVotes(jsonObj);
+    displayNumVotes.text(resultsObj.getNumVotes());
 
     for(n = 0; n < resultsObj.getNumQuestion(); n++)
     {
@@ -174,7 +176,7 @@ function resultsDisplay(page,jsonObj)
         newRow = $("<ul class='row results-row-ul' ></ul>");
         nameCell = $("<li class='col results-name-cell'>" + result.getName() +
                      "</li>");
-        resultPrecentage = result.getVoteCount() / resultsObj.getNumVotes();
+        resultPrecentage = (result.getVoteCount() / resultsObj.getNumVotes()) * 100;
         resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
                      "%</li>");
 
