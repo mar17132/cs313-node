@@ -167,7 +167,7 @@ function resultsDisplay(page,jsonObj)
     displayNumVotes = $("#resultsTotalVotes");
     resultsDisplayDiv = $(".results-rest-display");
 
-    displayNumVotes.empty();
+    resultsDisplayDiv.empty();
 
     resultsObj.calVotes(jsonObj);
     displayNumVotes.text(resultsObj.getNumVotes());
