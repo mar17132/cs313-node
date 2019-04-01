@@ -74,7 +74,7 @@ var resultsObj = {
         this.setNumVotes(objArray.length);
         for(m = 0; m < this.numVotes; m++)
         {
-            restVote = this.getVote(objArray[m].vote_lunch_id);
+            restVote = this.getVote(objArray[m].rest_id);
             restVote.addVote();
         }
     },
