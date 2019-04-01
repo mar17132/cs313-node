@@ -401,9 +401,12 @@ $(document).ready(function(){
         page = $(this).nextAll('.removeType').val();
         id = $(this).nextAll('.results-id').val();
 
-        ajaxCallItems("results","pageType=" + page + "&id=" + id,
-                      resultsDisplay);
-
+        ajaxCallItems("vote","pageType=" + page + "&id=" + id,function(page,jsonArray){
+            resultsObj.createVoteArray(jsonArray[0].rest_id.split(","),
+                                      jsonArray[0].rest_name.split(","));
+             ajaxCallItems("results","pageType=" + page + "&id=" + id,
+                          resultsDisplay);
+        });
 
     });
 

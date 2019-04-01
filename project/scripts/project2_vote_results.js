@@ -164,5 +164,6 @@ function resultsDisplay(page,jsonObj)
 {
     hideShowRemClass(resultsForm,disResultsList,'hidden');
 
+
 }
 
