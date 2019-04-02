@@ -13,9 +13,9 @@ function disVote(page,jsonObj)
             startArray = returnDate(value.votingstart).split("-");
             endArray = returnDate(value.votingend).split("-");
             startDate = new Date(startArray[0],startArray[1],startArray[2]);
-            console.log(startDate.getUTCMilliseconds());
+            console.log(startDate.getTime());
             endDate = new Date(endArray[0],endArray[1],endArray[2]);
-            console.log(endDate.getUTCMilliseconds());
+            console.log(endDate.getTime());
             currentDate = new Date();
 
             newRow = $("<ul class='table-row row'></ul>");
@@ -37,8 +37,8 @@ function disVote(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='Vote' type='button' class='vote-view-button voteBtn'/>");
 
-            if(!(currentDate.getUTCMilliseconds() >= startDate.getUTCMilliseconds()
-                 && currentDate.getUTCMilliseconds() <= endDate.getUTCMilliseconds()))
+            if(!(currentDate.getTime() >= startDate.getTime()
+                 && currentDate.getTime() <= endDate.getTime()))
             {
                viewButton.attr('disabled',true);
             }
