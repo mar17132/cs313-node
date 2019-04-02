@@ -33,7 +33,8 @@ function disVote(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='Vote' type='button' class='vote-view-button voteBtn'/>");
 
-            if(!(currentDate >= startDate && currentDate <= endDate))
+            if(!(currentDate.getMilliseconds() >= startDate.getMilliseconds()
+                 && currentDate.getMilliseconds() <= endDate.getMilliseconds()))
             {
                viewButton.attr('disabled',true);
             }
