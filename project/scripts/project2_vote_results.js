@@ -10,9 +10,9 @@ function disVote(page,jsonObj)
 
         $.each(jsonObj,function(index,value){
 
-            startDate = new Date(returnDate(value.votingstart));
-            endDate = new Date(returnDate(value.votingend));
-            currentDate = new Date();
+            startDate = new Date(returnDate(value.votingstart)).getMilliseconds();
+            endDate = new Date(returnDate(value.votingend)).getMilliseconds();
+            currentDate = new Date().getMilliseconds();
 
             newRow = $("<ul class='table-row row'></ul>");
 
