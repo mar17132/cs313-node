@@ -12,11 +12,11 @@ function disVote(page,jsonObj)
 
             startArray = returnDate(value.votingstart).split("-");
             endArray = returnDate(value.votingend).split("-");
-            startDate = new Date(startArray[0],startArray[1],startArray[2])
-                .getMilliseconds();
-            endDate = new Date(endArray[0],endArray[1],endArray[2])
-                .getMilliseconds();
-            currentDate = new Date().getMilliseconds();
+            startDate = new Date(startArray[0],startArray[1],startArray[2]);
+            console.log(startDate.getDate());
+            endDate = new Date(endArray[0],endArray[1],endArray[2]);
+            console.log(endDate.getDate());
+            currentDate = new Date();
 
             newRow = $("<ul class='table-row row'></ul>");
 
