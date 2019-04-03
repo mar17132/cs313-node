@@ -6,38 +6,38 @@ function compareTime(timeStr1,timeStr2)
     time2A = timeStr2.split("-");
 
     //year
-    if(time1A[0] > time2A[0])
+    if(parseInt(time1A[0]) > parseInt(time2A[0]))
     {
         return 2;
     }
-    else if(time1A[0] < time2A[0])
+    else if(parseInt(time1A[0]) < parseInt(time2A[0]))
     {
         return -1;
     }
-    else if(time1A[0] == time2A[0])
+    else if(parseInt(time1A[0]) == parseInt(time2A[0]))
     {
 
         //month
-        if(time1A[1] > time2A[1])
+        if(parseInt(time1A[1]) > parseInt(time2A[1]))
         {
             return 2;
         }
-        else if(time1A[1] < time2A[1])
+        else if(parseInt(time1A[1]) < parseInt(time2A[1]))
         {
             return -1;
         }
-        else if(time1A[1] == time2A[1])
+        else if(parseInt(time1A[1]) == parseInt(time2A[1]))
         {
             //day
-            if(time1A[1] > time2A[1])
+            if(parseInt(time1A[1]) > parseInt(time2A[1]))
             {
                 return 2;
             }
-            else if(time1A[1] < time2A[1])
+            else if(parseInt(time1A[1]) < parseInt(time2A[1]))
             {
                 return -1;
             }
-            else if(time1A[1] == time2A[1])
+            else if(parseInt(time1A[1]) == parseInt(time2A[1]))
             {
                 return 0;
             }
