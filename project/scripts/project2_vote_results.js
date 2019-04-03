@@ -18,7 +18,7 @@ function disVote(page,jsonObj)
             console.log(endDate);
             currentDate = new Date();
             currentDateStr = currentDate.getFullYear() + "-"
-                + currentDate.getMonth() + "-" +currentDate.getDate();
+                + (currentDate.getMonth() + 1) + "-" +currentDate.getDate();
 
             newRow = $("<ul class='table-row row'></ul>");
 
