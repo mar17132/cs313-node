@@ -41,7 +41,7 @@ function disVote(page,jsonObj)
 
             //if(currentDate >= startDate && currentDate < endDate)
             if(compareTime(currentDateStr,startDate) >= 0 &&
-               compareTime(currentDate,endDate) == -1)
+               compareTime(currentDateStr,endDate) == -1)
             {
                viewButton.attr('disabled',false);
             }
