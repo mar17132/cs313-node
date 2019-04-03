@@ -1,5 +1,52 @@
 
 
+function compareTime(timeStr1,timeStr2)
+{
+    time1A = timeStr1.split("-");
+    time2A = timeStr2.split("-");
+
+    //year
+    if(timeStr1[0] > timeStr2[0])
+    {
+        return -1;
+    }
+    else if(timeStr1[0] < timeStr2[0])
+    {
+        return 2;
+    }
+    else if(timeStr1[0] == timeStr2[0])
+    {
+
+        //month
+        if(timeStr1[1] > timeStr2[1])
+        {
+            return -1;
+        }
+        else if(timeStr1[1] < timeStr2[1])
+        {
+            return 2;
+        }
+        else if(timeStr1[1] == timeStr2[1])
+        {
+            //day
+            if(timeStr1[1] > timeStr2[1])
+            {
+                return -1;
+            }
+            else if(timeStr1[1] < timeStr2[1])
+            {
+                return 2;
+            }
+            else if(timeStr1[1] == timeStr2[1])
+            {
+                return 0;
+            }
+        }
+
+    }
+}
+
+
 function removeElemSpace(parentElem)
 {
     parentElem.contents().filter(function(){

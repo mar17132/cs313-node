@@ -10,13 +10,11 @@ function disVote(page,jsonObj)
 
         $.each(jsonObj,function(index,value){
 
-            startArray = returnDate(value.votingstart).split("-");
-            endArray = returnDate(value.votingend).split("-");
-            startDate = new Date(startArray[0],startArray[1],startArray[2]);
+            startDate = Date.parse(returnDate(value.votingstart));
             console.log(startDate.getTime());
-            endDate = new Date(endArray[0],endArray[1],endArray[2]);
+            endDate = Date.parse(returnDate(value.votingend));
             console.log(endDate.getTime());
-            currentDate = new Date();
+            currentDate = Date.now();
 
             newRow = $("<ul class='table-row row'></ul>");
 
@@ -37,8 +35,7 @@ function disVote(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='Vote' type='button' class='vote-view-button voteBtn'/>");
 
-            if(!(currentDate.getTime() >= startDate.getTime()
-                 && currentDate.getTime() <= endDate.getTime()))
+            if(!(currentDate >= startDate && currentDate <= endDate))
             {
                viewButton.attr('disabled',true);
             }
@@ -113,9 +110,11 @@ function resultsList(page,jsonObj)
 
         $.each(jsonObj,function(index,value){
 
-            startDate = new Date(returnDate(value.votingstart));
-            endDate = new Date(returnDate(value.votingend));
-            currentDate = new Date();
+            startDate = Date.parse(returnDate(value.votingstart));
+            console.log(startDate.getTime());
+            endDate = Date.parse(returnDate(value.votingend));
+            console.log(endDate.getTime());
+            currentDate = Date.now();
 
             newRow = $("<ul class='table-row row'></ul>");
 
