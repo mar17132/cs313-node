@@ -29,15 +29,15 @@ function compareTime(timeStr1,timeStr2)
         else if(parseInt(time1A[1]) == parseInt(time2A[1]))
         {
             //day
-            if(parseInt(time1A[1]) > parseInt(time2A[1]))
+            if(parseInt(time1A[2]) > parseInt(time2A[2]))
             {
                 return 2;
             }
-            else if(parseInt(time1A[1]) < parseInt(time2A[1]))
+            else if(parseInt(time1A[2]) < parseInt(time2A[2]))
             {
                 return -1;
             }
-            else if(parseInt(time1A[1]) == parseInt(time2A[1]))
+            else if(parseInt(time1A[2]) == parseInt(time2A[2]))
             {
                 return 0;
             }
