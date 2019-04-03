@@ -11,9 +11,9 @@ function disVote(page,jsonObj)
         $.each(jsonObj,function(index,value){
 
             startDate = Date.parse(returnDate(value.votingstart));
-            console.log(startDate.getTime());
+            console.log(startDate);
             endDate = Date.parse(returnDate(value.votingend));
-            console.log(endDate.getTime());
+            console.log(endDate);
             currentDate = Date.now();
 
             newRow = $("<ul class='table-row row'></ul>");
@@ -111,9 +111,9 @@ function resultsList(page,jsonObj)
         $.each(jsonObj,function(index,value){
 
             startDate = Date.parse(returnDate(value.votingstart));
-            console.log(startDate.getTime());
+            console.log(startDate);
             endDate = Date.parse(returnDate(value.votingend));
-            console.log(endDate.getTime());
+            console.log(endDate);
             currentDate = Date.now();
 
             newRow = $("<ul class='table-row row'></ul>");
