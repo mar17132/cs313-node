@@ -8,11 +8,11 @@ function compareTime(timeStr1,timeStr2)
     //year
     if(timeStr1[0] > timeStr2[0])
     {
-        return -1;
+        return 2;
     }
     else if(timeStr1[0] < timeStr2[0])
     {
-        return 2;
+        return -1;
     }
     else if(timeStr1[0] == timeStr2[0])
     {
@@ -20,22 +20,22 @@ function compareTime(timeStr1,timeStr2)
         //month
         if(timeStr1[1] > timeStr2[1])
         {
-            return -1;
+            return 2;
         }
         else if(timeStr1[1] < timeStr2[1])
         {
-            return 2;
+            return -1;
         }
         else if(timeStr1[1] == timeStr2[1])
         {
             //day
             if(timeStr1[1] > timeStr2[1])
             {
-                return -1;
+                return 2;
             }
             else if(timeStr1[1] < timeStr2[1])
             {
-                return 2;
+                return -1;
             }
             else if(timeStr1[1] == timeStr2[1])
             {

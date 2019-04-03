@@ -40,8 +40,8 @@ function disVote(page,jsonObj)
             viewButton = $("<input value='Vote' type='button' class='vote-view-button voteBtn'/>");
 
             //if(currentDate >= startDate && currentDate < endDate)
-            if(compareTime(currentDateStr,startDate) < 0 &&
-               compareTime(currentDate,endDate) > 0)
+            if(compareTime(currentDateStr,startDate) >= 0 &&
+               compareTime(currentDate,endDate) == -1)
             {
                viewButton.attr('disabled',false);
             }
