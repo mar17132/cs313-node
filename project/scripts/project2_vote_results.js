@@ -12,7 +12,8 @@ function disVote(page,jsonObj)
 
             startDate = Date.parse(returnDate(value.votingstart));
             console.log(startDate);
-            endDate = Date.parse(returnDate(value.votingend));
+            //endDate = Date.parse(returnDate(value.votingend));
+            endDate = Date.parse("2019-04-03");
             console.log(endDate);
             currentDate = Date.now();
 
