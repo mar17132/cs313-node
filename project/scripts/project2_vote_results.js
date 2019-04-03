@@ -10,12 +10,15 @@ function disVote(page,jsonObj)
 
         $.each(jsonObj,function(index,value){
 
-            startDate = Date.parse(returnDate(value.votingstart));
+            //startDate = Date.parse(returnDate(value.votingstart));
+            startDate =returnDate(value.votingstart);
             console.log(startDate);
             //endDate = Date.parse(returnDate(value.votingend));
-            endDate = Date.parse(2019,03,03);
+            endDate = returnDate(value.votingend);
             console.log(endDate);
-            currentDate = Date.now();
+            currentDate = new Date();
+            currentDateStr = currentDate.getFullYear() + "-"
+                + currentDate.getMonth() + "-" +currentDate.getDate();
 
             newRow = $("<ul class='table-row row'></ul>");
 
@@ -36,7 +39,9 @@ function disVote(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='Vote' type='button' class='vote-view-button voteBtn'/>");
 
-            if(currentDate >= startDate && currentDate < endDate)
+            //if(currentDate >= startDate && currentDate < endDate)
+            if(compareTime(currentDateStr,startDate) < 0 &&
+               compareTime(currentDate,endDate) > 0)
             {
                viewButton.attr('disabled',false);
             }
