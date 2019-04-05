@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>time test</title>
+        <style type="text/css">
+            .progressBar-wrapper{
+                border: 1px solid black;
+                width: 100%;
+                height: 24px;
+                border-radius: 30px;
+                overflow: hidden;
+            }
+            .progressBar-bar-1-50{
+                height: 24px;
+                width: 30%;
+                background-color: red;
+                text-align: right;
+            }
+            .progressBar-bar-51-70{
+                height: 24px;
+                width: 30%;
+                background-color: yellow;
+                text-align: right;
+            }
+            .progressBar-bar-71-100{
+                height: 24px;
+                width: 30%;
+                background-color: green;
+                text-align: right;
+            }
+            .progressBar-bar-0{
+                height: 24px;
+                width: 1%;
+                text-align: right;
+            }
+            .progress-container{
+                width: 400px;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+            li{
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .progress-text{
+                width: 400px;
+                height: 24px;
+                position: absolute;
+                z-index: 100;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>
+                0
+            </li>
+            <li>
+                <div class="progress-container">
+                    <div class="progressBar-wrapper" >
+                        <div class="progress-text"></div>
+                        <div id="progressBarDiv" class="progressBar-bar-1-50">30%</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                100
+            </li>
+        </ul>
+        <div>
+            <input type="text" id="progressText" />
+            <input type="button" value="Progress" id="progressBtn" />
+        </div>
+        <div id="displayDiv">
+
+        </div>
+        <script src="scripts/jquery/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" >
+            var progressTxt = $("#progressText");
+            var progressBtn = $("#progressBtn");
+            var progressBarDiv = $("#progressBarDiv");
+            var progressBar50Text = $(".progress-text");
+
+            var progressClassObj = function(classStr,startInt,endInt){
+                this.className = classStr;
+                this.startRange = startInt;
+                this.endRange = endInt;
+            };
+
+            var progressBarClass = {
+                progressClassArray:[],
+                addClass:function(classname,start,end){
+                    this.progressClassArray.push(new progressClassObj(classname,start,end));
+                },
+                findClass:function(progressInt){
+                    for(l = 0; l < this.progressClassArray.length; l++)
+                    {
+                        if(this.progressClassArray[l].startRange <= progressInt && 
+                           this.progressClassArray[l].endRange >= progressInt)
+                        {
+                            return this.progressClassArray[l];
+                        }
+                    }
+                }
+            };
+
+            progressBarClass.addClass("progressBar-bar-1-50",1,50);
+            progressBarClass.addClass("progressBar-bar-51-70",51,70);
+            progressBarClass.addClass("progressBar-bar-71-100",71,100);
+            progressBarClass.addClass("progressBar-bar-0",0,0);
+
+            function updateProgress(progressInt)
+            {
+                progressClass = progressBarClass.findClass(progressInt);
+                progressBarDiv.removeClass();
+                progressBarDiv.addClass(progressClass.className);
+                progressBarDiv.css('width',progressInt + "%");
+
+                if(progressInt >= 50)
+                {
+                    updateProgressText(progressBar50Text,progressInt + "%");
+                    removeProgressText(progressBarDiv);
+                }
+                else if(progressInt == 0)
+                {
+                    updateProgressText(progressBarDiv,progressInt + "%");
+                    removeProgressText(progressBar50Text);
+                    progressBarDiv.css('width',"1%");
+                }                
+                else
+                {
+                    updateProgressText(progressBarDiv,progressInt + "%");
+                    removeProgressText(progressBar50Text);
+                }
+            }
+
+
+            function updateProgressText(progressElem,progressStr)
+            {
+                progressElem.text(progressStr);
+            }
+
+
+            function removeProgressText(progressElem)
+            {
+                progressElem.text("");
+            }
+
+            progressBtn.on('click',function(){
+                updateProgress(progressTxt.val());
+                progressTxt.val("");
+            });
+
+
+
+
+
+
+
+            //ooo
+            var today = Date.now();
+            var yesterday = new Date('2019','03','02');
+            var tomorrow = Date.parse('2019-04-04');
+            var printString = "";
+            var displayDiv = $("#displayDiv");
+
+            test1 = yesterday;
+            test2 = new Date();
+            test2Str = test2.getFullYear() + "-" + (test2.getMonth() + 1) + 
+                       "-"  + test2.getDate();
+
+            console.log(yesterday);
+            console.log(today);
+
+            if(yesterday.getTime() < today)
+            {
+                printString += "yesterday < today = true\r\n";
+            }
+
+            if(Date.parse(test2Str) < tomorrow)
+            {
+                printString += "today < tomorrow = true\r\n";
+            }
+            
+            displayDiv.text(printString);
+
+        </script>
+    </body>
+</html>
+
+
+
