@@ -12,10 +12,8 @@ function disVote(page,jsonObj)
 
             //startDate = Date.parse(returnDate(value.votingstart));
             startDate =returnDate(value.votingstart);
-            console.log(startDate);
             //endDate = Date.parse(returnDate(value.votingend));
             endDate = returnDate(value.votingend);
-            console.log(endDate);
             currentDate = new Date();
             currentDateStr = currentDate.getFullYear() + "-"
                 + (currentDate.getMonth() + 1) + "-" +currentDate.getDate();
@@ -93,7 +91,7 @@ function displayVoteForm(page,jsonObj)
         parentUL = $("<ul class='vote-table row'></ul>");
         newRadio = $("<input type='radio' value='" + restIdArray[k] +
                      "' name='voteRest' class='vote-radio' />");
-        radioCell = $("<li class='col'></li>");
+        radioCell = $("<li class='col vote-radio'></li>");
         nameCell = $("<li class='col'>" + restNameArray[k] + "</li>");
 
         newRadio.appendTo(radioCell);
@@ -122,10 +120,8 @@ function resultsList(page,jsonObj)
 
             //startDate = Date.parse(returnDate(value.votingstart));
             startDate =returnDate(value.votingstart);
-            console.log(startDate);
             //endDate = Date.parse(returnDate(value.votingend));
             endDate = returnDate(value.votingend);
-            console.log(endDate);
             currentDate = new Date();
             currentDateStr = currentDate.getFullYear() + "-"
                 + (currentDate.getMonth() + 1) + "-" +currentDate.getDate();
@@ -190,24 +186,31 @@ function resultsDisplay(page,jsonObj)
     resultsObj.calVotes(jsonObj);
     displayNumVotes.text(resultsObj.getNumVotes());
 
-    for(n = 0; n < resultsObj.getNumQuestion(); n++)
+    if(!resultsObj.success)
     {
-        result = resultsObj.getVotObj(n);
-        newRow = $("<ul class='row results-row-ul' ></ul>");
-        nameCell = $("<li class='col results-name-cell'>" + result.getName() +
-                     "</li>");
-        resultPrecentage = ((result.getVoteCount() / resultsObj.getNumVotes())
-                            * 100).toFixed(0);
-       // resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
-       //              "%</li>");
+        for(n = 0; n < resultsObj.getNumQuestion(); n++)
+        {
+            result = resultsObj.getVotObj(n);
+            newRow = $("<ul class='row results-row-ul' ></ul>");
+            nameCell = $("<li class='col results-name-cell'>" + result.getName() +
+                         "</li>");
+            resultPrecentage = ((result.getVoteCount() / resultsObj.getNumVotes())
+                                * 100).toFixed(0);
+           // resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
+           //              "%</li>");
 
-        resultCell = $("<li class='col results-result-cell'></li>");
+            resultCell = $("<li class='col results-result-cell'></li>");
 
-        createProgressBar(resultPrecentage,resultCell);
+            createProgressBar(resultPrecentage,resultCell);
 
-        nameCell.appendTo(newRow);
-        resultCell.appendTo(newRow);
-        newRow.appendTo(resultsDisplayDiv);
+            nameCell.appendTo(newRow);
+            resultCell.appendTo(newRow);
+            newRow.appendTo(resultsDisplayDiv);
+        }
+    }
+    else
+    {
+        resultsDisplayDiv.text("No resluts found");
     }
 
     resultsObj.clearVoteArray();

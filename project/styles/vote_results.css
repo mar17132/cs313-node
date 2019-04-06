@@ -1,7 +1,14 @@
-.results-ul-form,.vote-ul-form{
+.results-ul-form,.vote-ul-form,
+.results-row-ul,.vote-table,
+.createVote-ul-form,.check-select-ul{
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+
+span.check-select{
+    padding-left: 10px;
 }
 
 
@@ -9,14 +16,26 @@
 
 }
 
+li.vote-radio{
+    max-width: 22px;
+}
 
-.vote-li-form{}
+.rest-vote-add,.rest-vote-edit{
+    margin-right: 10px;
+}
+
+.vote-li-form{
+    max-width: 115px;
+}
 
 
 .results-ul-form{}
 
 
 .results-li-form{}
+
+
+.results-row-ul{}
 
 
 .results-rest-display{}

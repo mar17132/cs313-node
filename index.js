@@ -366,7 +366,7 @@ express()
             {
                 if(queryRes.length < 1)
                 {
-                    res.status(200).json({message:"No Restaurants found"});
+                    res.status(200).json({success:false,message:"No Results found"});
                 }
                 else
                 {
