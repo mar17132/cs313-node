@@ -186,7 +186,7 @@ function resultsDisplay(page,jsonObj)
     resultsObj.calVotes(jsonObj);
     displayNumVotes.text(resultsObj.getNumVotes());
 
-    if(!resultsObj.success)
+    if(resultsObj.success != false)
     {
         for(n = 0; n < resultsObj.getNumQuestion(); n++)
         {
