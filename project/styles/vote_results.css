@@ -1,5 +1,5 @@
 .results-ul-form,.vote-ul-form,
-.results-row-ul,.vote-table,
+.results-row-ul,.voting-table
 .createVote-ul-form,.check-select-ul{
     margin: 0;
     padding: 0;
@@ -24,7 +24,7 @@ li.vote-radio{
     margin-right: 10px;
 }
 
-.vote-li-form{
+.vote-li-form,.results-li-form,.results-name-cell{
     max-width: 115px;
 }
 
@@ -40,3 +40,21 @@ li.vote-radio{
 
 .results-rest-display{}
 
+.rest-vote{
+    padding-bottom: 25px;
+}
+
+.voteForm{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+
+.resultsForm{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}

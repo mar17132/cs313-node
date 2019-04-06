@@ -88,7 +88,7 @@ function displayVoteForm(page,jsonObj)
 
     for(k = 0; k < restIdArray.length; k++)
     {
-        parentUL = $("<ul class='vote-table row'></ul>");
+        parentUL = $("<ul class='voting-table row'></ul>");
         newRadio = $("<input type='radio' value='" + restIdArray[k] +
                      "' name='voteRest' class='vote-radio' />");
         radioCell = $("<li class='col vote-radio'></li>");
