@@ -72,8 +72,8 @@ function updateProgress(progressInt,progressBarDiv,progressBar50Text)
     }
     else if(progressInt == 0)
     {
-        updateProgressText(progressBarDiv,progressInt + "%");
-        removeProgressText(progressBar50Text);
+        updateProgressText(progressBar50Text,progressInt + "%");
+        removeProgressText(progressBarDiv);
         width = 1;
     }
     else
