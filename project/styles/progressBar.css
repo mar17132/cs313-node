@@ -51,6 +51,7 @@
 .progress-li{
     display: inline-block;
     vertical-align: middle;
+    padding-right: 10px;
 }
 
 
