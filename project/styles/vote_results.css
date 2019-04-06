@@ -31,7 +31,8 @@ li.vote-radio{
     margin-top: 10px;
 }
 
-.vote-li-form,.results-li-form,.results-name-cell{
+.vote-form-info,.results-li-form,
+.results-name-cell{
     max-width: 115px;
 }
 
