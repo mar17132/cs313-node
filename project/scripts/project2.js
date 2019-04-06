@@ -530,6 +530,8 @@ $(document).ready(function(){
 
         });
 
+        userEmail.val("");
+
     });
 
 });
