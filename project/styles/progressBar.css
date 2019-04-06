@@ -1,4 +1,63 @@
-barWrapper{
-    border: 1px solid gray;
+.progressBar-wrapper{
+    border: 1px solid black;
+    width: 100%;
+    height: 24px;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
+
+.progressBar-bar-1-50{
+    height: 24px;
+    width: 30%;
+    background-color: red;
+    text-align: right;
+}
+
+
+.progressBar-bar-51-70{
+    height: 24px;
+    width: 30%;
+    background-color: yellow;
+    text-align: right;
+}
+.progressBar-bar-71-100{
+    height: 24px;
+    width: 30%;
+    background-color: green;
+    text-align: right;
+}
+
+
+.progressBar-bar-0{
+    height: 24px;
+    width: 1%;
+    text-align: right;
+}
+
+
+.progress-container{
+    width: 400px;
+}
+
+
+.progress-ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+.progress-li{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.progress-text{
+    width: 400px;
+    height: 24px;
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+}

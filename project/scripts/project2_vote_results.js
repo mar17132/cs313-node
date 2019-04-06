@@ -145,7 +145,7 @@ function resultsList(page,jsonObj)
             optionContent = $("<div class='table-cell-content'>");
             viewButton = $("<input value='View' type='button' class='results-view-button resultsBtn'/>");
 
-            if(!(currentDate >= startDate))
+            if(compareTime(currentDateStr,startDate) == -1)
             {
                viewButton.attr('disabled',true);
             }
@@ -194,8 +194,12 @@ function resultsDisplay(page,jsonObj)
                      "</li>");
         resultPrecentage = ((result.getVoteCount() / resultsObj.getNumVotes())
                             * 100).toFixed(0);
-        resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
-                     "%</li>");
+       // resultCell = $("<li class='col results-result-cell'>" + resultPrecentage +
+       //              "%</li>");
+
+        resultCell = $("<li class='col results-result-cell'></li>");
+
+        createProgressBar(resultPrecentage,resultCell);
 
         nameCell.appendTo(newRow);
         resultCell.appendTo(newRow);
