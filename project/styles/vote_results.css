@@ -31,7 +31,7 @@ li.vote-radio{
     margin-top: 10px;
 }
 
-.vote-form-info,
+.vote-form-info,.results-form-info,
 .results-name-cell{
     max-width: 115px;
 }
@@ -52,7 +52,7 @@ li.vote-radio{
     padding-bottom: 25px;
 }
 
-.voteForm{
+.vote-form{
     width: 400px;
     margin-left: auto;
     margin-right: auto;
@@ -60,7 +60,7 @@ li.vote-radio{
 }
 
 
-.resultsForm{
+.results-form{
     width: 700px;
     margin-left: auto;
     margin-right: auto;
