@@ -120,11 +120,15 @@ function resultsList(page,jsonObj)
 
         $.each(jsonObj,function(index,value){
 
-            startDate = Date.parse(returnDate(value.votingstart));
+            //startDate = Date.parse(returnDate(value.votingstart));
+            startDate =returnDate(value.votingstart);
             console.log(startDate);
-            endDate = Date.parse(returnDate(value.votingend));
+            //endDate = Date.parse(returnDate(value.votingend));
+            endDate = returnDate(value.votingend);
             console.log(endDate);
-            currentDate = Date.now();
+            currentDate = new Date();
+            currentDateStr = currentDate.getFullYear() + "-"
+                + (currentDate.getMonth() + 1) + "-" +currentDate.getDate();
 
             newRow = $("<ul class='table-row row'></ul>");
 
