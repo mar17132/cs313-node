@@ -1,5 +1,5 @@
 .results-ul-form,.vote-ul-form,
-.results-row-ul,.voting-table
+.results-row-ul,.voting-table,
 .createVote-ul-form,.check-select-ul{
     margin: 0;
     padding: 0;
@@ -22,6 +22,13 @@ li.vote-radio{
 
 .rest-vote-add,.rest-vote-edit{
     margin-right: 10px;
+}
+
+.editVote-form,createVote-form{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }
 
 .vote-li-form,.results-li-form,.results-name-cell{
