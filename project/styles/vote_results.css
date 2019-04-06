@@ -24,7 +24,7 @@ li.vote-radio{
     margin-right: 10px;
 }
 
-.editVote-form,createVote-form{
+.editVote-form,.createVote-form{
     width: 400px;
     margin-left: auto;
     margin-right: auto;
