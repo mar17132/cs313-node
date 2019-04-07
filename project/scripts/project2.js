@@ -220,7 +220,7 @@ $(document).ready(function(){
     removeElemSpace($('.menu-ul'));
     pagesObj.setCurrentPageObj(1);
     setDisplayPage(pagesObj.getCurrentPageObj().display);
-    menuButtons.trigger('click');
+
     menuButtons.on('click',function(){
         //setup page
         thisPage = pagesObj.getPageObjByName($(this)
@@ -270,6 +270,8 @@ $(document).ready(function(){
         menuButtons.removeClass('menu-selected');
         $(this).addClass('menu-selected');
     });
+
+    $("#homebtn").trigger('click');
 
     $('.restaurants-display').on('click','#addRestBtn',function(){
         hideShowRemClass($('.add-resturant'),$('.list-resturants'),'hidden');
