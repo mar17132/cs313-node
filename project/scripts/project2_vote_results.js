@@ -218,3 +218,68 @@ function resultsDisplay(page,jsonObj)
 
 }
 
+
+function disHomePage(page,jsonObj)
+{
+    if(jsonObj.length > 1)
+    {
+        hideShowRemClass(voteList,voteform,'hidden');
+
+        displayTable = $("#voteTable");
+        removeKeep(displayTable,1);
+
+        $.each(jsonObj,function(index,value){
+
+            startDate =returnDate(value.votingstart);
+            endDate = returnDate(value.votingend);
+            currentDate = new Date();
+            currentDateStr = currentDate.getFullYear() + "-"
+                + (currentDate.getMonth() + 1) + "-" +currentDate.getDate();
+
+            if(compareTime(currentDateStr,startDate) >= 0 &&
+                compareTime(currentDateStr,endDate) == -1)
+            {
+
+                newRow = $("<ul class='table-row row'></ul>");
+
+                lunchCell = $("<li class='table-cell col' ></li>");
+                startCell = $("<li class='table-cell col' ></li>");
+                endCell = $("<li class='table-cell col' ></li>");
+                optionCell = $("<li class='table-cell col' ></li>");
+
+                lunchContent = $("<div class='table-cell-content'>");
+                lunchContent.text(returnDate(value.lunchdate));
+
+                startContent = $("<div class='table-cell-content'>");
+                startContent.text(returnDate(value.votingstart));
+
+                endContent = $("<div class='table-cell-content'>");
+                endContent.text(returnDate(value.votingend));
+
+                optionContent = $("<div class='table-cell-content'>");
+                viewButton = $("<input value='Vote' type='button' class='home-view-button voteBtn'/>");
+
+                hiddenId = $("<input value='" + value.vote_id + "' type='hidden' class='vote-id'/>");
+                removeType = $("<input value='vote' type='hidden' class='removeType'/>");
+                viewButton.appendTo(optionContent);
+                hiddenId.appendTo(optionContent);
+                removeType.appendTo(optionContent);
+
+                lunchContent.appendTo(lunchCell);
+                startContent.appendTo(startCell);
+                endContent.appendTo(endCell);
+                optionContent.appendTo(optionCell);
+                lunchCell.appendTo(newRow);
+                startCell.appendTo(newRow);
+                endCell.appendTo(newRow);
+                optionCell.appendTo(newRow);
+
+                newRow.appendTo(displayTable);
+            }
+
+        });
+    }
+
+}
+
+

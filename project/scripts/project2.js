@@ -510,6 +510,7 @@ $(document).ready(function(){
         voteChoice = $(".vote-radio:checked").val();
         lunchvoteID = $("#vote_luchID").val();
         userEmail = $("#voteEmail").val();
+        $("#voteEmail").val("");
         sendStr = "addType=vote&email=" + userEmail + "&restId=" + voteChoice +
                   "&vlunchId=" + lunchvoteID;
         checkStr = "addType=vote&email=" + userEmail + "&id=" +lunchvoteID;
@@ -529,8 +530,6 @@ $(document).ready(function(){
             }
 
         });
-
-        userEmail.val("");
 
     });
 
