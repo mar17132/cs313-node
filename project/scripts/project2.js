@@ -248,7 +248,7 @@ $(document).ready(function(){
         }
         else if(thisPage.name == "home")
         {
-            ajaxCallItems("results","pageType=" + thisPage.name,
+            ajaxCallItems("stats","pageType=" + thisPage.name,
                           function(page,jsonObj){
 
                 var totalRestLi = $("#trest");
