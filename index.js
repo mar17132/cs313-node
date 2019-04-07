@@ -488,7 +488,7 @@ express()
                 }
                 else
                 {
-                    console.log(queryRes[0].rows);
+                    console.log(queryRes[0]);
                     res.status(200).json(queryRes.queryR);
                 }
             }
