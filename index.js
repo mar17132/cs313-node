@@ -488,6 +488,7 @@ express()
                 }
                 else
                 {
+                    console.log(queryRes[0].rows);
                     res.status(200).json(queryRes.queryR);
                 }
             }
