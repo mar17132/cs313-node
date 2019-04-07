@@ -488,7 +488,7 @@ express()
                 }
                 else
                 {
-                    res.status(200).json(queryRes);
+                    res.status(200).json(queryRes.queryR);
                 }
             }
 
@@ -524,7 +524,7 @@ function queryDB(queryText,callbackfunction)
 
             if(Array.isArray(results))
             {
-                callbackfunction(null,{success:true});
+                callbackfunction(null,{success:true,queryR:results});
             }
             else
             {
