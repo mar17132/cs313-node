@@ -400,3 +400,9 @@ ON r.ID = reslunch.rest_id
 GROUP BY vl.ID
 ORDER BY vl.lunchDate;
 
+
+--Get Totals
+SELECT COUNT(r.id) AS t_rest, COUNT(v.id) AS t_vote,
+COUNT(vl.id) AS t_vote_lunch
+FROM
+

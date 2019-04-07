@@ -464,6 +464,40 @@ express()
 
     })
 
+
+    .get('/stats',function(req,res){
+
+        var myVar = url.parse(req.url,true).query;
+        var queryText = "SELECT COUNT(id) FROM restaurants;\
+                            SELECT COUNT(id) FROM vote;\
+                            SELECT COUNT(id) FROM vote_lunch;";
+
+        queryDB(queryText,function(err,queryRes){
+
+            console.log(queryRes);
+
+            if(err || queryRes == null)
+            {
+                res.status(500).json({success:false,data:err});
+            }
+            else
+            {
+                if(queryRes.length < 1)
+                {
+                    res.status(200).json({success:false,message:"No Results found"});
+                }
+                else
+                {
+                    res.status(200).json(queryRes);
+                }
+            }
+
+        });
+
+
+    })
+
+
     /*###########End Project 2###############*/
 
 

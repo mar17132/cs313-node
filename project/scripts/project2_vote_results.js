@@ -225,7 +225,7 @@ function disHomePage(page,jsonObj)
     {
         hideShowRemClass(voteList,voteform,'hidden');
 
-        displayTable = $("#voteTable");
+        displayTable = $("#homeTable");
         removeKeep(displayTable,1);
 
         $.each(jsonObj,function(index,value){

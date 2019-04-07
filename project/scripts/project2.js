@@ -220,6 +220,7 @@ $(document).ready(function(){
     removeElemSpace($('.menu-ul'));
     pagesObj.setCurrentPageObj(1);
     setDisplayPage(pagesObj.getCurrentPageObj().display);
+    menuButtons.trigger('click');
     menuButtons.on('click',function(){
         //setup page
         thisPage = pagesObj.getPageObjByName($(this)
@@ -244,6 +245,25 @@ $(document).ready(function(){
         {
             ajaxCallItems("results","pageType=" + thisPage.name,
                           resultsList);
+        }
+        else if(thisPage.name == "home")
+        {
+            ajaxCallItems("results","pageType=" + thisPage.name,
+                          function(page,jsonObj){
+
+                var totalRestLi = $("#trest");
+                var totalLunchLi = $("#tLunches");
+                var totalVotesLi = $("#tVotes");
+
+                totalRestLi.text(jsonObj[0].id);
+                totalLunchLi.text(jsonObj[2].id);
+                totalVotesLi.text(jsonObj[1].id);
+
+                ajaxCallItems("results","pageType=" + thisPage.name,
+                  disHomePage);
+            });
+
+
         }
 
         //config the menu click
