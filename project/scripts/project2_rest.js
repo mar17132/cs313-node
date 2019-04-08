@@ -39,8 +39,8 @@ function displayRestaurants(restaurantObj)
 
 
             optionContent = $("<div class='table-cell-content'>");
-            removeButton = $("<input value='Remove' type='button' class='rest-remove-button restBtn'/>");
-            editButton = $("<input value='Edit' type='button' class='rest-edit-button restBtn'/>");
+            removeButton = $("<input value='Remove' type='button' class='rest-remove-button restBtn tableBtns'/>");
+            editButton = $("<input value='Edit' type='button' class='rest-edit-button restBtn tableBtns'/>");
             hiddenId = $("<input value='" + value.id + "' type='hidden' class='rest-id'/>");
             removeType = $("<input value='restaurants' type='hidden' class='removeType'/>");
             editButton.appendTo(optionContent);

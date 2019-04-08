@@ -257,11 +257,13 @@ function disHomePage(page,jsonObj)
                 endContent.text(returnDate(value.votingend));
 
                 optionContent = $("<div class='table-cell-content'>");
-                viewButton = $("<input value='Vote' type='button' class='home-view-button voteBtn'/>");
+                voteButton = $("<input value='Vote' type='button' class='home-vote-button tableBtns'/>");
+                resultsButton = $("<input value='Results' type='button' class='home-results-button tableBtns'/>");
 
-                hiddenId = $("<input value='" + value.vote_id + "' type='hidden' class='vote-id'/>");
-                removeType = $("<input value='vote' type='hidden' class='removeType'/>");
-                viewButton.appendTo(optionContent);
+                hiddenId = $("<input value='" + value.vote_id + "' type='hidden' class='home-id'/>");
+                removeType = $("<input value='home' type='hidden' class='removeType'/>");
+                voteButton.appendTo(optionContent);
+                resultsButton.appendTo(optionContent);
                 hiddenId.appendTo(optionContent);
                 removeType.appendTo(optionContent);
 

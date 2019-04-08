@@ -465,7 +465,8 @@ $(document).ready(function(){
 
     //results
     $('.results-display').on('click','.results-view-button',function(){
-        hideShowRemClass(voteform,voteList,'hidden');
+            hideShowRemClass(resultsForm,disResultsList,'hidden');
+
 
         page = $(this).nextAll('.removeType').val();
         id = $(this).nextAll('.results-id').val();
@@ -552,6 +553,40 @@ $(document).ready(function(){
             }
 
         });
+
+    });
+
+
+    $(".home-display").on("click",".home-vote-button",function(){
+        hideShowRemClass(voteform,voteList,'hidden');
+        $(".home-display").hide();
+        page = pagesObj.getPageObjByName('vote');
+        $("." + page.display).show();
+        id = $(this).nextAll('.home-id').val();
+
+        ajaxCallItems("vote","pageType=vote&id=" + id,
+              displayVoteForm);
+
+    });
+
+
+    $(".home-display").on("click",".home-results-button",function(){
+        hideShowRemClass(resultsForm,disResultsList,'hidden');
+        $(".home-display").hide();
+        page = pagesObj.getPageObjByName('results');
+        $("." + page.display).show();
+        id = $(this).nextAll('.home-id').val();
+
+
+        ajaxCallItems("vote","pageType=results&id=" + id,function(page,jsonArray){
+            resultsObj.createVoteArray(jsonArray[0].rest_id.split(","),
+                                      jsonArray[0].rest_name.split(","));
+                lunchDateDisplay = $("#resultsLunchDate");
+                lunchDateDisplay.text(returnDate(jsonArray[0].lunchdate));
+             ajaxCallItems("results","pageType=results&id=" + id,
+                          resultsDisplay);
+        });
+
 
     });
 
