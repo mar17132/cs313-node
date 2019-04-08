@@ -91,11 +91,9 @@
 
 
 .stat-name-col{
-    max-width: 170px;
+    max-width: 125px;
 }
 
 .home-stats-div{
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+
 }
