@@ -255,9 +255,9 @@ $(document).ready(function(){
                 var totalLunchLi = $("#tLunches");
                 var totalVotesLi = $("#tVotes");
 
-                totalRestLi.text(jsonObj[0].rows[0].id);
-                totalLunchLi.text(jsonObj[2].rows[0].id);
-                totalVotesLi.text(jsonObj[1].rows[0].id);
+                totalRestLi.text(jsonObj[0].rows[0].count);
+                totalLunchLi.text(jsonObj[2].rows[0].count);
+                totalVotesLi.text(jsonObj[1].rows[0].count);
 
                 ajaxCallItems("results","pageType=" + thisPage.name,
                   disHomePage);
