@@ -211,6 +211,7 @@ function resultsDisplay(page,jsonObj)
     else
     {
         resultsDisplayDiv.text("No resluts found");
+        displayNumVotes.text("0");
     }
 
     resultsObj.clearVoteArray();
