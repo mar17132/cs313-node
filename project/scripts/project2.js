@@ -564,6 +564,9 @@ $(document).ready(function(){
         $("." + page.display).show();
         id = $(this).nextAll('.home-id').val();
 
+        menuButtons.removeClass('menu-selected');
+        $("#voteMenuBtn").addClass('menu-selected');
+
         ajaxCallItems("vote","pageType=vote&id=" + id,
               displayVoteForm);
 
@@ -576,6 +579,9 @@ $(document).ready(function(){
         page = pagesObj.getPageObjByName('results');
         $("." + page.display).show();
         id = $(this).nextAll('.home-id').val();
+
+         menuButtons.removeClass('menu-selected');
+        $("#resutlsMenuBtn").addClass('menu-selected');
 
 
         ajaxCallItems("vote","pageType=results&id=" + id,function(page,jsonArray){
